@@ -47,4 +47,17 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
+    var typing = new Typed('.typing', {
+        strings:
+            [
+            "Junior Software development",
+            "Junior Back-end Developer",
+            "Junior Front-End Developer",
+            "Junior Full stack Developer",
+            "Application Manager ERP",
+            ],
+        typeSpeed: 100,
+        backSpeed: 30,
+        loop: true
+    });
 });
