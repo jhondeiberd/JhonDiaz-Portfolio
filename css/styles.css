@@ -55,11 +55,11 @@
 }
 
 .avatar {
-  border-radius: 60%;
-  /* display: inline-block; */
+  border-radius: 50%;
+  display: inline-block;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 
 .terms {
@@ -3041,9 +3041,9 @@ textarea.form-control-lg {
   border-color: #3d79c2;
 }
 .btn-primary:hover {
-  color: black;
-  background-color: #f9fafb;
-  border-color: #f9fafb;
+  color: #fff;
+  background-color: #183f6e;
+  border-color: #183f6e;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
