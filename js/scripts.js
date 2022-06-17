@@ -56,8 +56,8 @@ window.addEventListener('DOMContentLoaded', event => {
             "Junior Full stack Developer",
             "Application Manager ERP",
             ],
-        typeSpeed: 100,
-        backSpeed: 30,
+        typeSpeed: 80,
+        backSpeed: 50,
         loop: true
     });
 });
