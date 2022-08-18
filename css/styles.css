@@ -58,6 +58,15 @@
   display: inline-block;
   position: relative;
   width: 90%;
+  size-adjust: inherit;
+}
+
+li::marker{
+  color:blue;
+}
+
+li {
+  text-align: left;
 }
 
 b{
