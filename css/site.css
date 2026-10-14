@@ -1,0 +1,1531 @@
+/**
+ * Portfolio stylesheet: glacier palette, light/dark themes, EN/FR/ES.
+ *
+ * Regions (use your editor's "#region" folding):
+ *    1. Fonts
+ *    2. Design tokens           colours and shadow for each theme (CSS variables)
+ *    3. Base                    reset, typography, links, focus, shared helpers
+ *    4. Header and navigation   sticky bar, tabs, language switch, theme toggle, mobile menu
+ *    5. Buttons
+ *    6. Hero                    name, status, rotating roles, portrait, location pill, ridge
+ *    7. Sections                shared section spacing and anchor offset
+ *    8. About
+ *    9. Skills
+ *   10. Experience              company cards (header + photo + details) and the "earlier roles" block
+ *   11. Projects                cards and the featured project
+ *   12. Education
+ *   13. Contact                 details list and form
+ *   14. Footer                  version label and visit counter
+ *   15. Project dialog          modal with the demo video/image
+ *   16. Motion                  one entrance animation and reduced-motion overrides
+ *
+ * Conventions:
+ *  - Block__element--modifier naming (BEM). State classes start with "is-".
+ *  - Every component keeps its own media queries right after its base rules, so a later
+ *    rule of the same specificity always wins; do not move a media query above its base rules.
+ *  - Breakpoints in use: 1320, 1140 (nav collapses to the hamburger), 1100 (hero title stacks),
+ *    980, 760 (single column).
+ *  - Colours always come from the variables in region 2; never hard-code a themed colour.
+ */
+
+/* #region 1. Fonts */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/bricolage.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('../assets/fonts/instrument.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
+/* #endregion */
+
+/* #region 2. Design tokens */
+/* Light is the default. js/head script sets data-theme before first paint, so there is no flash. */
+:root,
+:root[data-theme='light'] {
+  --bg: #f2f7f8; /* page background */
+  --bg-tint: #e6f0f2; /* alternate section background */
+  --surface: #ffffff; /* cards, inputs, pills */
+  --ink: #0e2830; /* main text */
+  --ink-soft: #3d5a63; /* secondary text */
+  --line: #cfdfe3; /* borders and dividers */
+  --accent: #0a6f7a;
+  --accent-ink: #ffffff; /* text on top of --accent */
+  --accent-soft: #d6eef0; /* chips and highlights */
+  --warm: #d9532b; /* errors */
+  --ridge-far: #cfe3e7; /* hero mountain silhouettes */
+  --ridge-near: #b5d3d9;
+  --ring: #0a6f7a; /* keyboard focus outline */
+  --shadow: 0 1px 2px rgba(14, 40, 48, 0.06), 0 12px 32px -12px rgba(14, 40, 48, 0.18);
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --bg: #0a171c;
+  --bg-tint: #0f2229;
+  --surface: #132a32;
+  --ink: #e5f1f3;
+  --ink-soft: #9db8bf;
+  --line: #24424b;
+  --accent: #5fd3c8;
+  --accent-ink: #062226;
+  --accent-soft: #15383d;
+  --warm: #ff8a5c;
+  --ridge-far: #123038;
+  --ridge-near: #184049;
+  --ring: #5fd3c8;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 14px 36px -14px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+/* #endregion */
+
+/* #region 3. Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* scroll-padding keeps anchor targets clear of the sticky header (64 px bar) */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    400 1.0625rem/1.65 'Instrument Sans',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
+  line-height: 1.12;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+h3 {
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+p {
+  margin: 0 0 1rem;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Shared helpers */
+.wrap {
+  width: min(1160px, 100% - 2rem);
+  margin-inline: auto;
+} /* centred content column */
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+}
+.skip:focus {
+  left: 0.5rem;
+} /* "skip to content" link, visible on focus */
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+} /* SVG sprite icons */
+/* #endregion */
+
+/* #region 4. Header and navigation */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+}
+
+/* Logo + name. Labels never wrap: French and Spanish are longer than English. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px 10px 4px 4px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.85rem;
+}
+
+/* Tabs. data-target on a link tells the script which section to highlight (see js/app.js, region 5). */
+.nav {
+  margin-left: auto;
+}
+.nav__list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+}
+.nav__link {
+  display: block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.98rem;
+  white-space: nowrap;
+}
+.nav__link:hover {
+  color: var(--ink);
+  background: var(--bg-tint);
+}
+.nav__link.is-active {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* Right-hand tools: resume, language switch, theme toggle, hamburger */
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tools__cv {
+  white-space: nowrap;
+}
+.lang {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px;
+  background: var(--surface);
+}
+.lang__btn {
+  border: 0;
+  background: none;
+  color: var(--ink-soft);
+  font:
+    600 0.82rem 'Instrument Sans',
+    sans-serif;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.lang__btn[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.iconbtn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.iconbtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+#themeToggle .icon--sun {
+  display: none;
+} /* moon is shown in light mode... */
+:root[data-theme='dark'] #themeToggle .icon--sun {
+  display: block;
+} /* ...and the sun in dark mode */
+:root[data-theme='dark'] #themeToggle .icon--moon {
+  display: none;
+}
+.nav__toggle {
+  display: none;
+} /* hamburger: only on small screens */
+
+/* Slightly tighter tabs between 1141 and 1320 px so seven Spanish labels still fit on one line */
+@media (min-width: 1141px) and (max-width: 1320px) {
+  .nav__link {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.94rem;
+  }
+  .brand {
+    font-size: 1.02rem;
+  }
+}
+/* Seven tabs need room: below 1140 px the nav becomes a drop-down opened by the hamburger */
+@media (max-width: 1140px) {
+  .nav__toggle {
+    display: inline-grid;
+  }
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    display: none;
+    padding: 0.5rem 1rem 1rem;
+  }
+  .nav.is-open {
+    display: block;
+  }
+  .nav__list {
+    flex-direction: column;
+  }
+  .tools {
+    margin-left: auto;
+  }
+}
+@media (max-width: 980px) {
+  .tools__cv {
+    display: none;
+  }
+} /* the resume button moves into the hero / contact section */
+@media (max-width: 760px) {
+  .brand__name {
+    display: none;
+  }
+}
+/* Phones: tighten the header controls so the page never scrolls sideways (was 11 px too wide at 390 px) */
+@media (max-width: 480px) {
+  .lang__btn {
+    padding: 0.3rem 0.5rem;
+  }
+  .tools {
+    gap: 0.35rem;
+  }
+}
+/* Very small phones (360 px and below) */
+@media (max-width: 400px) {
+  .site-header__bar {
+    gap: 0.5rem;
+  }
+  .lang__btn {
+    padding: 0.3rem 0.4rem;
+  }
+  .iconbtn {
+    width: 36px;
+    height: 36px;
+  }
+}
+/* Smallest phones (340 px and below): shrink the logo mark and the gaps */
+@media (max-width: 340px) {
+  .site-header__bar {
+    gap: 0.25rem;
+  }
+  .brand__mark {
+    width: 30px;
+    height: 30px;
+  }
+  .iconbtn {
+    width: 30px;
+    height: 30px;
+  }
+  .lang__btn {
+    padding: 0.3rem 0.3rem;
+  }
+  .tools {
+    gap: 0.2rem;
+  }
+}
+/* #endregion */
+
+/* #region 5. Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font:
+    600 1rem 'Instrument Sans',
+    sans-serif;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn--primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn--small {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.92rem;
+  font-size: 0.9rem;
+}
+.btn[disabled] {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
+}
+/* #endregion */
+
+/* #region 6. Hero */
+/* Layout: a top row (name centred, status on the right) over two columns (text | portrait). */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-tint) 100%);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+.hero + .section {
+  position: relative;
+  z-index: 3;
+} /* the first section overlaps the ridge */
+
+/* Top row: three columns so the name stays centred and never collides with the status pill */
+.hero__top {
+  grid-column: 1 / -1;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0 1.2rem;
+}
+.hero__name {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.hero__top .hero__name {
+  grid-column: 2;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2.3rem, 5vw, 3.9rem);
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.hero__top .status {
+  grid-column: 3;
+  justify-self: end;
+  margin: 0;
+  white-space: nowrap;
+}
+.status__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2fb36b;
+  box-shadow: 0 0 0 4px rgba(47, 179, 107, 0.2);
+}
+
+/* Text column */
+.hero__copy {
+  padding-bottom: clamp(4.5rem, 9vw, 6.5rem);
+}
+.hero__lead {
+  font-size: 1.2rem;
+  max-width: 34em;
+}
+.hero__proof {
+  color: var(--ink-soft);
+  max-width: 34em;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+/* Rotating role titles. Every role is in the DOM, stacked in ONE grid cell, so the box keeps the
+   height of the tallest role (no layout jump). Only .is-active is visible. js/app.js region 3 drives it. */
+.roles {
+  margin: 0.7rem 0 1.3rem;
+}
+.roles__stage {
+  display: grid;
+}
+.role {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
+}
+.role.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.role__title {
+  margin: 0 0 0.8rem;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+.role__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.role__chips li {
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+/* Progress dots: the 22 px button is the touch target, the 7 px ::before is what you see */
+.roles__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+.roles__dot {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.roles__dot::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--ink-soft);
+  opacity: 0.45;
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease,
+    background-color 0.3s ease;
+}
+.roles__dot.is-active::before {
+  width: 22px;
+  background: var(--accent);
+  opacity: 1;
+}
+
+/* Portrait column. The bottom fade is a gradient overlay (a CSS mask here caused paint glitches). */
+.hero__photo {
+  position: relative;
+  justify-self: center;
+  width: min(400px, 78vw);
+  align-self: end;
+}
+.portrait {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  border-radius: 999px 999px 0 0;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.hero__photo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 36%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--ridge-near) 95%);
+}
+.place {
+  position: absolute;
+  z-index: 4;
+  left: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.45rem 0.95rem 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.place__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2fb36b;
+  box-shadow: 0 0 0 4px rgba(47, 179, 107, 0.22);
+  flex: none;
+}
+/* Decorative arches behind the portrait and the mountain ridge at the bottom */
+.arch {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.arch__ring {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  border: 2px solid var(--accent);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  opacity: 0.5;
+}
+.arch__ring--1 {
+  width: 108%;
+  height: 104%;
+}
+.arch__ring--2 {
+  width: 118%;
+  height: 108%;
+  opacity: 0.3;
+}
+.arch__ring--3 {
+  width: 129%;
+  height: 112%;
+  opacity: 0.15;
+}
+.hero__ridge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: clamp(90px, 14vw, 190px);
+  z-index: 1;
+}
+.ridge--far {
+  fill: var(--ridge-far);
+}
+.ridge--near {
+  fill: var(--ridge-near);
+}
+
+/* Hero responsive: below 1100 px the status sits above the name and both align left */
+@media (max-width: 1100px) {
+  .hero__top {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .hero__top .status {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    margin-bottom: 1rem;
+  }
+  .hero__top .hero__name {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+  }
+}
+/* Single column on phones, in the order: portrait, status, name, text */
+@media (max-width: 760px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero__photo {
+    order: -2;
+    width: min(300px, 70vw);
+  }
+  .hero__photo::after {
+    background: linear-gradient(to bottom, transparent, var(--bg) 96%);
+  }
+  .hero__top {
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.2rem 0 0.4rem;
+  }
+  .hero__top .status {
+    order: -1;
+    position: static;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+  .hero__top .hero__name {
+    text-align: left;
+  }
+  .hero__copy {
+    padding-bottom: 5.5rem;
+  }
+}
+/* #endregion */
+
+/* #region 7. Sections */
+.section {
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+}
+.section--tint {
+  background: var(--bg-tint);
+}
+/* Tab links land with the section title right under the header: cancel the section's own top padding */
+section.section[id] {
+  scroll-margin-top: calc(-1 * clamp(3.5rem, 8vw, 6rem) + 1.75rem);
+}
+/* #endregion */
+
+/* #region 8. About */
+.about {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.about__text p {
+  max-width: 38em;
+}
+.facts {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 0.5rem 1.4rem;
+  box-shadow: var(--shadow);
+  margin: 0;
+}
+.facts__row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.facts__row:last-child {
+  border-bottom: 0;
+}
+.facts dt {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+.facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+/* #endregion */
+
+/* #region 9. Skills */
+.skills {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.skills__row {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 1.5rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+.skills__label {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chips li {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.chips--quiet li {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+/* "Programming languages" row: one line per group ("In professional work", "From my studies...") */
+.langs {
+  display: grid;
+  gap: 0.8rem;
+}
+.langs__line {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+}
+.langs__tag {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  min-width: 17rem; /* same width for both tags so the chips line up */
+}
+@media (max-width: 760px) {
+  .skills__row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .langs__tag {
+    min-width: 0;
+  }
+}
+/* #endregion */
+
+/* #region 10. Experience */
+/* One card per job: header (title, company, period + duration badge, company blurb, optional photo)
+   and below it the full list of duties. Markup comes from job() in tools/build.py. */
+.timeline {
+  display: grid;
+  gap: 1.6rem;
+  max-width: 62rem;
+}
+.job {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.job__head {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.job--photo .job__head {
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 32%, 340px);
+} /* text | photo */
+.job__headtext {
+  padding: 1.5rem 1.7rem 1.1rem;
+}
+.job__title {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.job--minor .job__title {
+  font-size: 1.25rem;
+} /* secondary jobs (e.g. landscaper) */
+.job__org {
+  margin: 0.25rem 0 0.55rem;
+  color: var(--ink-soft);
+}
+.job__about {
+  margin: 0;
+  max-width: 38em;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+} /* company blurb */
+
+/* Period and duration. The duration is a filled badge so it stands out. */
+.job__when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.8rem;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+.job__period {
+  margin: 0.15rem 0 0;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.job__dur {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+/* Company photo, faded into the card on its left edge */
+.job__photo {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 190px;
+}
+.job__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--surface) 0%, transparent 40%);
+}
+
+/* Duties */
+.job__list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 1.1rem 1.7rem 1.5rem 2.9rem;
+  list-style: disc;
+  border-top: 1px solid var(--line);
+}
+.job__list li::marker {
+  color: var(--accent);
+}
+
+/* "Earlier roles at Permoda": collapsible block holding smaller cards */
+.earlier {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 0.2rem 1.2rem;
+}
+.earlier > summary {
+  cursor: pointer;
+  padding: 0.9rem 0;
+  font-weight: 600;
+}
+.earlier .job {
+  border-radius: 14px;
+  box-shadow: none;
+  margin: 0 0 1rem;
+  background: var(--bg-tint);
+}
+.earlier .job__photo::after {
+  background: linear-gradient(90deg, var(--bg-tint) 0%, transparent 40%);
+}
+
+@media (max-width: 760px) {
+  .job--photo .job__head {
+    grid-template-columns: 1fr;
+  }
+  .job--photo .job__photo {
+    order: -1;
+    min-height: 170px;
+  } /* photo goes on top */
+  .job__photo::after {
+    background: linear-gradient(0deg, var(--surface) 0%, transparent 45%);
+  }
+  .job__headtext {
+    padding: 1.2rem 1.2rem 0.9rem;
+  }
+  .job__list {
+    padding: 1rem 1.2rem 1.3rem 2.3rem;
+  }
+}
+/* #endregion */
+
+/* #region 11. Projects */
+/* Six-column grid: normal cards span 2 (three per row); the featured project spans all 6. */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.4rem;
+}
+.project {
+  grid-column: span 2;
+}
+.project--featured {
+  grid-column: span 6;
+}
+.project__open {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+.project__open:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.project__img {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--bg-tint);
+}
+.project__img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 13 / 7;
+  object-fit: cover;
+}
+.project__play {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.project__play .icon {
+  fill: currentColor;
+  stroke: none;
+  width: 20px;
+  height: 20px;
+} /* play triangle is a filled shape... */
+.project__play .icon:has(use[href='#i-external']) {
+  fill: none;
+  stroke: currentColor;
+} /* ...the "external link" icon is an outline */
+.project__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.2rem 1.3rem 1.4rem;
+  flex: 1;
+}
+.project__title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.project__short {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+.project__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+.project__tech li {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  background: var(--accent-soft);
+}
+.project__cta {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+/* Featured project: image on the left (46%), text on the right */
+.project--featured .project__open {
+  flex-direction: row;
+}
+.project--featured .project__img {
+  flex: 0 0 46%;
+}
+.project--featured .project__img img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+.project--featured .project__text {
+  justify-content: center;
+  padding: 2rem;
+}
+.project--featured .project__title {
+  font-size: 1.7rem;
+}
+
+@media (max-width: 980px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .project,
+  .project--featured {
+    grid-column: span 1;
+  }
+  .project--featured {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 760px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .project--featured {
+    grid-column: span 1;
+  }
+  .project--featured .project__open {
+    flex-direction: column;
+  }
+  .project--featured .project__img {
+    flex: none;
+  }
+  .project--featured .project__img img {
+    height: auto;
+    aspect-ratio: 13 / 7;
+  }
+  .project--featured .project__text {
+    padding: 1.2rem 1.3rem 1.4rem;
+  }
+}
+/* #endregion */
+
+/* #region 12. Education */
+.edu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+} /* studies | courses */
+.edu__head {
+  margin-bottom: 1.2rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.edu__list {
+  display: grid;
+  gap: 1.1rem;
+}
+.edu__item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.edu__logo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.edu__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.edu__logo--icon {
+  background: var(--accent-soft);
+  color: var(--accent);
+} /* fallback tile when an item has no logo */
+.edu__logo--icon .icon {
+  width: 26px;
+  height: 26px;
+}
+.edu__title {
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.35;
+}
+.edu__org,
+.edu__when {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+/* Date and certificate link share one row (the link wraps under the date on very narrow screens) */
+.edu__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 1rem;
+}
+.edu__link {
+  font-size: 0.93rem;
+}
+@media (max-width: 760px) {
+  .edu {
+    grid-template-columns: 1fr;
+  }
+}
+/* #endregion */
+
+/* #region 13. Contact */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 4rem);
+} /* details | form */
+.contact__lead {
+  font-size: 1.15rem;
+  max-width: 28em;
+}
+.contact__list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+.contact__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.contact__list .icon {
+  color: var(--accent);
+}
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  box-shadow: var(--shadow);
+}
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 9rem;
+}
+/* Validation: js/app.js toggles .is-invalid on the .field wrapper */
+.field__error {
+  display: none;
+  margin: 0.35rem 0 0;
+  color: var(--warm);
+  font-size: 0.9rem;
+}
+.field.is-invalid input,
+.field.is-invalid textarea {
+  border-color: var(--warm);
+}
+.field.is-invalid .field__error {
+  display: block;
+}
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+} /* honeypot field, hidden from people */
+/* Result message under the form (.is-ok / .is-error are set from JavaScript) */
+.form__status {
+  min-height: 1.4rem;
+  font-weight: 500;
+}
+.form__status.is-ok {
+  color: #1f8a52;
+}
+.form__status.is-error {
+  color: var(--warm);
+}
+:root[data-theme='dark'] .form__status.is-ok {
+  color: #6be0a0;
+}
+.form__status a {
+  color: inherit;
+  font-weight: 700;
+}
+@media (max-width: 760px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}
+/* #endregion */
+
+/* #region 14. Footer */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 0;
+  background: var(--bg-tint);
+}
+.site-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.site-footer p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+.version {
+  font-size: 0.9rem;
+} /* "Portfolio version X" label */
+/* Visit counter pill. It stays hidden until the API answers (see js/app.js region 8). */
+.visits {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+.visits .icon {
+  color: var(--accent);
+}
+.visits[hidden] {
+  display: none;
+}
+/* #endregion */
+
+/* #region 15. Project dialog */
+/* Native <dialog>; opened with showModal() so the browser handles focus trapping and Esc. */
+.modal {
+  width: min(920px, 100% - 1.5rem);
+  max-height: 92vh;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+.modal::backdrop {
+  background: rgba(5, 16, 20, 0.72);
+  backdrop-filter: blur(3px);
+}
+.modal__box {
+  padding: 1.2rem 1.4rem 1.6rem;
+}
+.modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.modal__media {
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.modal__media video,
+.modal__media img {
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+.modal__media iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+}
+.modal__desc {
+  margin: 1rem 0 0;
+}
+.modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+.modal[open] {
+  animation: pop 0.22s ease;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* #endregion */
+
+/* #region 16. Motion */
+/* One orchestrated entrance: the hero portrait rises and the arches fade in behind it. */
+@media (prefers-reduced-motion: no-preference) {
+  .portrait {
+    animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .arch__ring {
+    animation: ring 1.1s ease-out both;
+  }
+  .arch__ring--2 {
+    animation-delay: 0.12s;
+  }
+  .arch__ring--3 {
+    animation-delay: 0.24s;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes ring {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+/* Reduced motion: no animation or transition anywhere. The role rotator still changes titles, but instantly. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .role,
+  .roles__dot::before {
+    transition: none;
+    transform: none;
+  }
+}
+/* #endregion */

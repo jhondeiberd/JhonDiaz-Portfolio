@@ -1,0 +1,8 @@
+# Store every text file with LF endings so Prettier (endOfLine: lf) and the build agree on Windows, Mac and Linux.
+* text=auto eol=lf
+# Binary assets are never converted.
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp4 binary
+*.pdf binary

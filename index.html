@@ -1,745 +1,1243 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Jhon Diaz</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Portfolio</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#skills">Technical Skills</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#studies">Training and certifications</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="assets/CV - Jhon Deiber Diaz Parra.pdf">Resume</a></li>
-                    </ul>
-                </div>
-            </div>
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="t002">Jhon Diaz | Software developer: .NET, C#, REST APIs, SQL Server</title>
+    <meta
+      name="description"
+      content="Portfolio of Jhon Deiber Diaz Parra, software developer in Alberta, Canada: C# / ASP.NET Core, REST APIs, SQL Server, Microsoft Graph API and SharePoint. English, French and Spanish."
+      data-i18n-attr="content:t001"
+    />
+    <meta name="author" content="Jhon Deiber Diaz Parra" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jhon Diaz | Software developer" />
+    <meta
+      property="og:description"
+      content="C# / ASP.NET Core, REST APIs, SQL Server, Microsoft Graph. Alberta, Canada."
+    />
+    <meta property="og:image" content="assets/img/og.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jhon Deiber Diaz Parra",
+        "jobTitle": "Software Developer",
+        "email": "mailto:jhondeiberd@gmail.com",
+        "address": { "@type": "PostalAddress", "addressRegion": "AB", "addressCountry": "CA" },
+        "knowsLanguage": ["en", "fr", "es"],
+        "sameAs": ["https://www.linkedin.com/in/jhondeiberd/", "https://github.com/jhondeiberd"]
+      }
+    </script>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/instrument.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'dark' && t !== 'light')
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          d.setAttribute('data-theme', t);
+          var q = new URLSearchParams(location.search).get('lang');
+          var nl = (navigator.language || 'en').slice(0, 2);
+          var l = q || localStorage.getItem('lang') || (nl === 'fr' || nl === 'es' ? nl : 'en');
+          d.setAttribute('lang', l === 'fr' || l === 'es' ? l : 'en');
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#about" data-i18n="t212">Skip to content</a>
+    <!-- #region SVG icon sprite -->
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-10 6L2 7" />
+        </symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+          />
+        </symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+        </symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" /></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" /></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18" /></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          />
+        </symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect x="2" y="9" width="4" height="12" />
+          <circle cx="4" cy="4" r="2" />
+        </symbol>
+        <symbol id="i-external" viewBox="0 0 24 24">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3" />
+        </symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+          <circle cx="12" cy="12" r="3" />
+        </symbol>
+        <symbol id="i-translate" viewBox="0 0 24 24">
+          <path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M12 5c-1 4-4 7-7 8M13 21l4-10 4 10M14.5 18h5" />
+        </symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </symbol>
+      </defs>
+    </svg>
+    <!-- #endregion -->
+    <!-- #region Header -->
+
+    <div id="top"></div>
+    <header class="site-header">
+      <div class="wrap site-header__bar">
+        <a class="brand" href="#top" aria-label="Jhon Diaz"
+          ><span class="brand__mark" aria-hidden="true">JD</span><span class="brand__name">Jhon Diaz</span></a
+        >
+        <nav class="nav" id="siteNav" aria-label="Main navigation" data-i18n-attr="aria-label:t010">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#top" data-target="hero" data-i18n="t003">Home</a></li>
+            <li><a class="nav__link" href="#about" data-i18n="t004">About</a></li>
+            <li><a class="nav__link" href="#skills" data-i18n="t005">Skills</a></li>
+            <li><a class="nav__link" href="#experience" data-i18n="t006">Experience</a></li>
+            <li><a class="nav__link" href="#projects" data-i18n="t007">Projects</a></li>
+            <li><a class="nav__link" href="#education" data-i18n="t008">Education</a></li>
+            <li><a class="nav__link" href="#contact" data-i18n="t009">Contact</a></li>
+          </ul>
         </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="row">
-                        <div class="col">
-                            <div class="align-self-end">
-                                <h1 class="text-white font-weight-bold">Jhon Deiber Diaz Parra</h1>
-                                <hr class="divider" />
-                            </div>
-                            <div class="align-self-baseline">
-                                <h2 class="text-white text-center"> <span class="typing"></span></h2>
-                            </div><br>
-                            <div class="align-self-baseline">
-                                <a class="btn btn-primary btn-xl" href="#about">About me</a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img class="avatar" src="assets/img/Profile.png" alt="..." />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- About-->
-        <section class="page-section bg-primary" id="about">
-            <div class="container px-6 px-lg-6">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col text-center">
-                        <h2 class="text-white mt-0">About me</h2>
-                        <hr class="divider divider-light" />
-                        <div class="row">
-
-                            <div class="col">
-                                <img class="avatar" src="assets/img/About.png" alt="..." />
-                            </div>
-
-                            <div class="col">
-
-                                <p class="text-white-75">
-                                    I am a professional with extensive skills and experience in the industry, 
-                                    I have experience as an administrator in Microsoft Dynamics ERP, SQL database server, 
-                                    and systems such as POS, eCommerce, WMS, and PLM. I know Object Oriented Programming (OOP), 
-                                    different programming languages and tools that allow me to be a person capable of contributing 
-                                    to the needs of the company and its customers. Throughout my career, 
-                                    I have participated in large-scale complex projects, functionalities, 
-                                    and interfaces reengineering. I believe that innovation and continuous 
-                                    improvement is a success factor for organizations, which is why 
-                                    I tirelessly insist on applying these criteria in all the initiatives in which 
-                                    I have participated. I like to make a difference with my commitment, my responsibility, 
-                                    and my effort, and always give my best.
-                                </p>
-                            
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="text-white text-center">English</p>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-white text-center">Professional working proficiency</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="text-white text-center">French</p>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 45%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-white text-center">Elementary proficiency</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="text-white text-center">Spanish</p>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-white text-center">Native or bilingual proficiency</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><br>               
-                    </div>
-                </div>
-                <div class="align-self-baseline text-center">
-                    <a class="btn btn-primary btn-xl" href="#skills">Technical Skills</a>
-                </div>
-            </div>
-        </section>
-
-            <!-- Skills-->
-            <section class="page-section masthead" id="skills">
-            <div class="container px-4 px-lg-5">
-                <h2 class="text-center mt-0">Technical Skills</h2>
-                <hr class="divider" />
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi-globe fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Web</h3>
-                                <p >HTML5<br>CSS3<br>Node.js<br>React.js<br>Web services API</p>
-                            </div>
-                        </div><br>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi-laptop fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Programming languages</h3>
-                                <p >Java<br>Python<br>GO<br>C#<br>C++<br>PHP<br>JavaScript<br>Transact-SQL</p>
-                            </div>
-                        </div><br>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi-laptop fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Mobile technologies</h3>
-                                <p >Kotlin<br>Flutter</p>
-                            </div>
-                        </div><br>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi bi-github fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Control version</h3>
-                                <p >Git<br>GitHub<br>Bitbucket</p>
-                            </div>
-                        </div><br>
-                    </div>
-                </div><br>
-
-                <div class="row gx-4 gx-lg-5 text-center">
-                    <div class="col-lg-4 col-md-4 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi-kanban fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Project management </h3>
-                                <p >Scrum<br>Kamban<br>Trello<br>Planner</p>
-                            </div>
-                        </div><br>
-                    </div>
-                    <div class="col-lg-4 col-md-4 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi bi-server fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Database</h3>
-                                <p >SQL server<br>MySql<br>MariaBD<br>PostgreSQL</p>
-                            </div>
-                        </div><br>
-                    </div>
-                    <div class="col-lg-4 col-md-6 text-center">
-                        <div class="card">
-                            <div class="box">
-                                <div class="bi-building fs-1 text-white"></div>
-                                <h3 class="h4 mb-2">Business management Software</h3>
-                                <p >ERP Microsoft Dynamics<br>WMS Arcante<br>PLM Porini<br>ICG POS</p>
-                            </div>
-                        </div><br>
-                    </div>
-                </div><br>
-                <div class="align-self-baseline text-center">
-                    <a class="btn btn-primary btn-xl" href="#studies">Training and certifications</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- studies-->
-        <section class="page-section bg-primary" id="studies">
-            <div class="container px-4 px-lg-5">
-                <h2 class="text-white mt-0 text-center">Training and certifications</h2>
-                <hr class="divider divider-light" /><br>
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="text-white mt-0 text-center">Education</h4>
-
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://isi-mtl.com/es/course/programacion-y-tecnologias-web/"><img src="assets/img/projects\image/isi.jpg" /></a>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h5">Programmation et Technologies Web</div>
-                                    <div class="h7">Attestation of College Studies</div>
-                                    <div class="h7">Institut supérieur d’informatique ISI</div>
-                                    <div class="h7">Montreal, Canada&emsp;&emsp;Feb 2021 - Present</div>
-                                </div>          
-                            </div><br>
-
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://centrecsai.org/"><img src="assets/img/projects\image/csai.jpg" /></a>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h5">Francisation Level 3 FIA209-1</div>
-                                    <div class="h7">French studies</div>
-                                    <div class="h7">Centre Social d'aide aux Immigrants - CSAI</div>
-                                    <div class="h7">Montreal, Canada&emsp;&emsp;Octuber 2022 - Present</div>
-                                </div>          
-                            </div><br>
-
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="http://ingproduccion.udistrital.edu.co:8080/">
-                                            <img src="assets/img/projects\image/Distri.jpg" /></a>
-                                        </div>
-                                    </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h5">Production engineer</div>
-                                    <div class="h7">Bachelor's Degree</div>
-                                    <div class="h7">Universidad Distrital Francisco José de Caldas</div>
-                                    <div class="h7">Bogotá, Colombia&emsp;&emsp;2008 - 2013</div>
-                                </div>          
-                            </div><br>
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://www.linkedin.com/in/fundacion-cidca-34b52a25/">
-                                            <img src="assets/img/projects\image/cidca.jpg" /></a>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h5">Industrial technology</div>
-                                    <div class="h7">Diploma of Vocational Studies</div>
-                                    <div class="h7">Fundación Cidca</div>
-                                    <div class="h7">Bogotá, Colombia&emsp;&emsp;2002 - 2005</div>
-                                </div>          
-                            </div><br>
-                        </div>
-
-                        <div class="col">
-                            <h4 class="text-white mt-0 text-center">Certifications</h4>
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://capacitateparaelempleo.org/pages.php?r=.tema&tagID=15840">
-                                            <img src="assets/img/projects\image/slim.jpg" /></a>
-                                        </div>
-                                    </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h6">Object-oriented programming paradigm</div>
-                                    <div class="h8">Fundación Carlos Slim&emsp;&emsp;Online</div>
-                                    <div class="h8">Mar 2021 - May 2021</div>
-                                    <a class="text-white" href="https://capacitateparaelempleo.org/verifica/5x00zealg/">Credential URL</a>
-                                </div>          
-                            </div><br>
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://www.lourtec.com/">
-                                            <img src="assets/img/projects\image/lourtec.jpg" /></a>
-                                        </div>
-                                    </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h6">Analyzing and Visualizing Data with Microsoft Power BI</div>
-                                    <div class="h8">Microsoft Certified Solutions Associate (MCSA)</div>
-                                    <div class="h8">Lourtec - Online</div>
-                                    <div class="h8">2020 - 2020</div>
-                                </div>          
-                            </div><br>
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://lourtec.com/cursos/microsoft/base-de-datos/20762-desarrollando-bases-de-datos-sql">
-                                            <img src="assets/img/projects\image/lourtec.jpg" /></a>
-                                        </div>
-                                    </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h6">SQL Database Development</div>
-                                    <div class="h8">Microsoft Certified Solutions Associate (MCSA)</div>
-                                    <div class="h8">Lourtec - Online</div>
-                                    <div class="h8">2019 - 2020</div>
-                                </div>          
-                            </div><br>
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://www.lourtec.com/cursos/microsoft/desarrollo-de-software">
-                                            <img src="assets/img/projects\image/lourtec.jpg" /></a>
-                                        </div>
-                                    </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h6">Developing applications Web C# - ASP.NET Core MVC</div>
-                                    <div class="h8">Microsoft Certified Solutions Associate (MCSA)</div>
-                                    <div class="h8">Lourtec - Online</div>
-                                    <div class="h8">2019 - 2019</div>
-                                </div>          
-                            </div><br>
-                            <div class="row text-white">
-                                <div class="col">
-                                    <div class="col-md-2 text-center">
-                                        <a href="https://capacitateparaelempleo.org/pages.php?r=.tema&tagID=4066">
-                                            <img src="assets/img/projects\image/slim.jpg" /></a>
-                                        </div>
-                                    </div>
-                                <div class="col-md-9 text-left">
-                                    <div class="h6">Database Administrator (DBA)</div>
-                                    <div class="h8">Fundación Carlos Slim&emsp;&emsp;Online</div>
-                                    <div class="h8">Dec 2017 - Feb 2018</div>
-                                    <a class="text-white" href="https://capacitateparaelempleo.org/verifica/649qu9a4h/">Credential URL</a>
-                                </div>          
-                            </div><br>
-                        </div>
-                        </div>
-                    </div>
-                </div><br>
-            </div>
-            <div class="align-self-baseline text-center">
-                <a class="btn btn-primary btn-xl" href="#experience">Experience</a>
-            </div>
-            </section><br>
-
-        <!-- experience-->
-        <section class="page-section" id="experience">
-            <!-- <div class="container px-4 px-lg-5"> -->
-                <h2 class="text-center mt-0">Professional experiences</h2>
-                <hr class="divider" />
-                <div class="container">
-                    <div class="main-timeline">
-                        <!-- start experience section-->
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                        <span class="month">1 Years</span>
-                                        <span class="year">2022</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Landscaper</h5>
-                                <p>Boardwalk, Montréal QC, Canada</p>
-                                <p class="description">
-                                    <li> Responsible for painting common areas of assigned buildings.
-                                    <li> Responsible for mowing the lawns around the buildings.
-                                    <li> Support the maintenance and concierges teams when necessary.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                        <span class="month">3 Years</span>
-                                        <span class="year">2021</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Applications and Database Manager ERP</h5>
-                                <p>Permoda, Bogotá - Colombia</p>
-                                <p class="description">
-                                    <li> Implemented agile methodologies for the execution and follow-up of projects and developments in Dynamics ERP.</li>
-                                    <li> Supported my team with debugging code in the Dynamics ERP AOT for bug fixes.</li>
-                                    <li> Developed database queries for incident resolution and analysis.</li>
-                                    <li> Collaborated with product managers and third parties to identify and resolve issues coordinated system requirements, and created project schedules.</li>
-                                    <li> Monitor database performance, Define users and enable data distribution.</li>
-                                    <li> Database maintenance, indexes, re-indexing, statistics, locks, back-up</li>
-                                    <li> Planned and executed annual budget for ERP improvement.</li>
-                                    <li> Planned, implemented and supervised IT technology solutions to ensure satisfactory fulfillment of end-user requirements, implementation and support in a productive environment.</li>
-                                    <li> Coordinated the development of virtual training material for the users’ application</li>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                        <span class="month">9 Years</span>
-                                        <span class="year">2017</span>  
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Applications Professional ERP</h5>
-                                <p>Permoda, Bogotá - Colombia</p>
-                                <p class="description">
-                                    <li> Escalated problems to the Technical Specialist Level third or above within the support structure.
-                                    <li> Led the definition and formation of plans for applications aimed to master users’ knowledge.
-                                    <li> Performed test runs for approval and implementation of developments in a production environment.
-                                    <li> Enhanced and maintained ERP functionalities and execute upcoming projects.
-                                    <li> Implemented and deployed ERP's standard modules and local functionalities.
-                                    <li> Optimized processes and procedures in the ERP
-                                    <li> Developed virtual training material amended to extend the ERP modules.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                        <span class="month">2 Years</span>
-                                        <span class="year">2008</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Production Planning Analyst</h5>
-                                <p>Permoda, Bogotá - Colombia</p>
-                                <p class="description">
-                                    <li> Implemented Material Requirements Planning (MRP) methodology for product production
-                                    <li> Designed and configured technical sheets and spreadsheets for clothing products.
-                                    <li> Calculated the manufacturing route and the cost of the bill of materials for the garments.
-                                    <li> Applied engineering industrialization methods and plans to improve the manufacturing process to optimize operating costs.
-                                    <li> Optimized raw material inventories and allocation based on collection designs.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                        <span class="month">3 Years</span>
-                                        <span class="year">2006</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Production Engineering Analyst</h5>
-                                <p>Permoda, Bogotá - Colombia</p>
-                                <p class="description">
-                                    <li> Designed and enhance workload balancing for production plants.
-                                    <li> Implemented engineering methods and time analysis for the plans' workstations.
-                                    <li> Prepared operational listings for garments products.
-                                    <li> Designed and implement standards time for garments operations.
-                                    <li> Identified and improved bottlenecks for production modules.
-                                    <li> Prepared efficiency reports and control the unproductive time of the plant.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                        <span class="month">Start</span>
-                                        <span class="year">2003</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end experience section-->
-                    </div>
-                </div>
-            <!-- </div> -->
-            <div class="align-self-baseline text-center">
-                <a class="btn btn-primary btn-xl" href="#portfolio">Projects</a>
-            </div>
-            </section><br>
-
-
-
-        <!-- Portfolio-->
-        <div id="portfolio">
-            <div class="container-fluid p-0">
-                <h2 class="text-center mt-0">Projects</h2>
-                <hr class="divider" />
-                <div class="row g-0 justify-content-center">
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/projects/fullsize/1.gif" title="Application personal Budget Android">
-                            <img class="img-fluid" src="assets/img/projects/thumbnails/1.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Application personal Budget Android</div>
-                                <div class="project-name">
-                                    Application developed in Kottlin - Android to manage income, expenses, and personal balance. Allows additional, edit, delete transactions, and is multilingual.
-                                </div>
-                            </div>
-                            <a class="btn btn-primary" href="https://github.com/jhondeiberd/Android/tree/jhondeiberd/FinalProject">Code</a>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/projects/fullsize/2.gif" title="Application full-stack Manager favorite music albums">
-                            <img class="img-fluid" src="assets/img/projects/thumbnails/2.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Application full-stack Manager favorite music albums</div>
-                                <div class="project-name">
-                                    Development of a web application for the user to manage a list of favorites, searching, adding, and deleting. It was built with a back-end server using Node.js + Express for the REST APIs that manage the PostgreSQL database. The front-end server is a React.js that request the user 
-                                    requirements with RESTful APIs for the Discogs Music. My role in this project was developing 
-                                    the Backend part
-                                </div>
-                            </div>
-                            <a class="btn btn-primary" href="https://github.com/jhondeiberd/SoftStructure/tree/jhondeiberd/Final-project">Code</a>
-                        </a>
-                    </div>
-                </div>
-                <div class="row g-0 justify-content-center">
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/projects/fullsize/3.gif" title="MVC application for management of contacts">
-                            <img class="img-fluid" src="assets/img/projects/thumbnails/3.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">MVC application for management of contacts</div>
-                                <div class="project-name">
-                                    Application developed in C# for contact management, a graphical interface that allows 
-                                    you to create new contacts, edit existing ones and delete them, these data are stored in text files. 
-                                    In this project worked. In this project we worked on distributing parts of the menu for the project. 
-                                    In this project, we distributed parts of the menu for the project, and each one coded and tested 
-                                    his part.
-                                </div>
-                            </div>
-                            <a class="btn btn-primary" href="https://github.com/jhondeiberd/C-Sharp-dev/tree/master/Wpf_Managing_Contacts">Code</a>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/projects/fullsize/4.jpg" title="Maintain ERP Database">
-                            <img class="img-fluid" src="assets/img/projects/thumbnails/4.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Maintain ERP Database</div>
-                                <div class="project-name">
-                                    Maintain ERP Database
-                                    I Developed and programed in Transact-SQL to rebuild and reorganize indexes and 
-                                    update statistics, backups to maintain optimal performance of the company's ERP database.</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="tools">
+          <a
+            class="btn btn--small btn--ghost tools__cv"
+            href="assets/docs/Jhon_Diaz_CV_EN.pdf"
+            data-cv
+            target="_blank"
+            rel="noopener"
+            download="Jhon_Diaz_CV_EN.pdf"
+            ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download" /></svg
+            ><span data-i18n="t011">Resume</span></a
+          >
+          <div class="lang" role="group" aria-label="Language" data-i18n-attr="aria-label:t012">
+            <button type="button" class="lang__btn" data-lang="en" aria-pressed="true" lang="en">EN</button>
+            <button type="button" class="lang__btn" data-lang="fr" aria-pressed="false" lang="fr">FR</button>
+            <button type="button" class="lang__btn" data-lang="es" aria-pressed="false" lang="es">ES</button>
+          </div>
+          <button type="button" class="iconbtn" id="themeToggle" aria-label="Switch to dark theme">
+            <svg class="icon icon--moon" aria-hidden="true" focusable="false"><use href="#i-moon" /></svg
+            ><svg class="icon icon--sun" aria-hidden="true" focusable="false"><use href="#i-sun" /></svg>
+          </button>
+          <button
+            type="button"
+            class="iconbtn nav__toggle"
+            id="menuToggle"
+            aria-expanded="false"
+            aria-controls="siteNav"
+            aria-label="Open menu"
+          >
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
+          </button>
         </div>
-        <!-- Call to action-->
-        <section class="page-section bg-dark text-white">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">Resume</h2>
-                <a class="btn btn-light btn-xl" href="assets/CV - Jhon Deiber Diaz Parra.pdf">Download Now</a>
+      </div>
+    </header>
+    <!-- #endregion -->
+    <main>
+      <!-- #region Hero -->
+
+      <section class="hero" id="hero">
+        <div class="wrap hero__grid">
+          <div class="hero__top">
+            <h1 class="hero__name">Jhon Deiber Diaz Parra</h1>
+            <p class="status">
+              <span class="status__dot" aria-hidden="true"></span><span data-i18n="t013">Open to work</span>
+            </p>
+          </div>
+          <div class="hero__copy">
+            <div class="roles" id="roles">
+              <div class="roles__stage">
+                <div class="role is-active">
+                  <p class="role__title" data-i18n="t015">Software Developer</p>
+                  <ul class="role__chips">
+                    <li><span data-i18n="t014">Full Stack Developer</span></li>
+                  </ul>
+                </div>
+                <div class="role">
+                  <p class="role__title" data-i18n="t019">Back-End Developer</p>
+                  <ul class="role__chips">
+                    <li><span data-i18n="t016">SQL Server Developer</span></li>
+                    <li><span data-i18n="t017">API Developer</span></li>
+                    <li><span data-i18n="t018">Integration Developer</span></li>
+                  </ul>
+                </div>
+                <div class="role">
+                  <p class="role__title" data-i18n="t023">Front-End Developer</p>
+                  <ul class="role__chips">
+                    <li><span data-i18n="t020">JavaScript Developer</span></li>
+                    <li><span data-i18n="t021">UI Developer</span></li>
+                    <li><span data-i18n="t022">Web Developer</span></li>
+                  </ul>
+                </div>
+                <div class="role">
+                  <p class="role__title" data-i18n="t027">Enterprise Applications</p>
+                  <ul class="role__chips">
+                    <li><span data-i18n="t024">Business Systems</span></li>
+                    <li><span data-i18n="t025">Enterprise Apps</span></li>
+                    <li><span data-i18n="t026">Systems Integration</span></li>
+                  </ul>
+                </div>
+                <div class="role">
+                  <p class="role__title" data-i18n="t031">ERP Analyst</p>
+                  <ul class="role__chips">
+                    <li><span data-i18n="t028">Microsoft Dynamics ERP</span></li>
+                    <li><span data-i18n="t029">ERP Applications</span></li>
+                    <li><span data-i18n="t030">ERP Support</span></li>
+                  </ul>
+                </div>
+                <div class="role">
+                  <p class="role__title" data-i18n="t034">Application Support</p>
+                  <ul class="role__chips">
+                    <li><span data-i18n="t032">Application Support Analyst</span></li>
+                    <li><span data-i18n="t033">Systems Support</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="roles__dots" id="roleDots"></div>
             </div>
-        </section>
+            <p class="hero__lead" data-i18n="t035">
+              I build and maintain the .NET applications and APIs that keep business systems connected,
+              reliable and fast.
+            </p>
+            <p class="hero__proof" data-i18n="t036">
+              More than 3 years developing and supporting production systems, on top of 12 years running
+              enterprise ERP operations. I work in French, English and Spanish.
+            </p>
+            <div class="hero__actions">
+              <a
+                class="btn btn--primary"
+                href="assets/docs/Jhon_Diaz_CV_EN.pdf"
+                data-cv
+                target="_blank"
+                rel="noopener"
+                download="Jhon_Diaz_CV_EN.pdf"
+                ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download" /></svg
+                ><span data-i18n="t037">Download resume</span></a
+              >
+              <a class="btn btn--ghost" href="#contact"
+                ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail" /></svg
+                ><span data-i18n="t038">Send a message</span></a
+              >
+            </div>
+          </div>
+          <div class="hero__photo">
+            <div class="arch" aria-hidden="true">
+              <span class="arch__ring arch__ring--3"></span><span class="arch__ring arch__ring--2"></span
+              ><span class="arch__ring arch__ring--1"></span>
+            </div>
+            <picture>
+              <source srcset="assets/img/jhon.webp" type="image/webp" />
+              <img
+                class="portrait"
+                src="assets/img/jhon.jpg"
+                width="800"
+                height="1000"
+                fetchpriority="high"
+                alt="Portrait of Jhon Deiber Diaz Parra"
+                data-i18n-attr="alt:t039"
+              />
+            </picture>
+            <p class="place"><span class="place__dot" aria-hidden="true"></span>Calgary, Alberta, CA</p>
+          </div>
+        </div>
+        <svg
+          class="hero__ridge"
+          viewBox="0 0 1440 220"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            class="ridge ridge--far"
+            d="M0 220V120l90-48 70 34 110-86 80 62 70-30 120 78 90-58 110 70 100-96 90 74 80-46 110 82 100-64 90 52 100-34 100 62H1440V220z"
+          />
+          <path
+            class="ridge ridge--near"
+            d="M0 220V160l130-52 90 44 120-70 100 78 110-54 140 66 100-60 130 70 120-58 110 50 110-34 100 60H1440V220z"
+          />
+        </svg>
+      </section>
+      <!-- #endregion -->
+      <!-- #region About -->
 
+      <section class="section section--tint" id="about">
+        <div class="wrap about">
+          <div class="about__text">
+            <h2 data-i18n="t040">About me</h2>
+            <p data-i18n="t041">
+              I’m a software developer with more than three years of professional experience building and
+              maintaining C# / .NET Framework applications, REST APIs and SQL Server databases. My work has
+              covered monitoring the applications and APIs that keep systems exchanging data, resolving
+              production incidents, and developing new APIs, features and tools that business teams use every
+              day.
+            </p>
+            <p data-i18n="t042">
+              Before moving into development full time, I spent twelve years in ERP applications (Microsoft
+              Dynamics). I led the team that supported the ERP and other enterprise systems, managed the
+              database, the budget and the licences, and approved new developments, projects and migrations.
+            </p>
+            <p data-i18n="t043">
+              In my ERP roles, I worked directly with area managers and end users. I listened to their needs,
+              turned them into requirements, documented the solutions and supported the teams that depended on
+              them. I bring the same approach to every project: understand the problem first, then build the
+              solution that fits it.
+            </p>
+            <p data-i18n="t044">
+              I like to adopt new technologies early. I use AI assistants to speed up development and optimize
+              code, and I always review, test and understand what I deliver.
+            </p>
+          </div>
+          <dl class="facts">
+            <div class="facts__row">
+              <dt data-i18n="t045">Based in</dt>
+              <dd data-i18n="t046">Alberta, Canada</dd>
+            </div>
+            <div class="facts__row">
+              <dt data-i18n="t047">Looking for</dt>
+              <dd data-i18n="t048">Software developer or application support roles</dd>
+            </div>
+            <div class="facts__row">
+              <dt data-i18n="t049">Main stack</dt>
+              <dd data-i18n="t050">.NET, C#, REST APIs, SQL Server, Microsoft Graph</dd>
+            </div>
+            <div class="facts__row">
+              <dt data-i18n="t051">Spanish</dt>
+              <dd data-i18n="t052">Native</dd>
+            </div>
+            <div class="facts__row">
+              <dt data-i18n="t053">French</dt>
+              <dd data-i18n="t054">Professional working proficiency (B2+)</dd>
+            </div>
+            <div class="facts__row">
+              <dt data-i18n="t055">English</dt>
+              <dd data-i18n="t056">Intermediate (B2), currently studying</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <!-- #endregion -->
+      <!-- #region Skills -->
 
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container px-4 px-lg-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="align-self-baseline">
-                            <div class="icons"></div>
-                                <div class="row">
-                                    <div class="col-md-2 text-center">
-                                        <i class="h1 text-black bi bi-file-person-fill">
-                                        </i>
-                                    </div>
-                                    <div class="col-md-9 text-left">
-                                        <div class="h4 head">Name</div>
-                                        <div class="sub-title">Jhon Deiber Diaz Parra</div>
-                                    </div>          
-                                </div><br>
+      <section class="section" id="skills">
+        <div class="wrap">
+          <h2 data-i18n="t057">Technical skills</h2>
+          <div class="skills">
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t058">Back-end and APIs</h3>
+              <ul class="chips">
+                <li>C# / .NET Framework</li>
+                <li>ASP.NET Core MVC</li>
+                <li>RESTful APIs / Web API</li>
+                <li>Swagger (OpenAPI)</li>
+                <li>Hangfire</li>
+                <li>Microsoft Graph API</li>
+                <li>Node.js / Express.js</li>
+              </ul>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t060">Databases and BI</h3>
+              <ul class="chips">
+                <li>SQL Server (T-SQL)</li>
+                <li data-i18n="t059">Stored procedures and tuning</li>
+                <li>SSRS / SSIS / ETL</li>
+                <li>Power BI</li>
+                <li>PostgreSQL</li>
+                <li>MySQL / MariaDB</li>
+              </ul>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t061">Front-end</h3>
+              <ul class="chips">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript / TypeScript</li>
+                <li>React.js</li>
+                <li>Bootstrap</li>
+                <li>Tailwind CSS</li>
+              </ul>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t063">DevOps and tools</h3>
+              <ul class="chips">
+                <li>Git / GitHub / Bitbucket</li>
+                <li>Azure DevOps (TFS)</li>
+                <li data-i18n="t062">IIS deployment</li>
+                <li>PowerShell</li>
+                <li>Office 365 / SharePoint</li>
+              </ul>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t068">AI-assisted development</h3>
+              <ul class="chips">
+                <li data-i18n="t064">AI coding assistants</li>
+                <li data-i18n="t065">Code optimization and refactoring</li>
+                <li data-i18n="t066">Faster development cycles</li>
+                <li data-i18n="t067">Prompt engineering</li>
+              </ul>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t071">Programming languages</h3>
+              <div class="langs">
+                <div class="langs__line">
+                  <span class="langs__tag" data-i18n="t069">In professional work</span>
+                  <ul class="chips">
+                    <li>C#</li>
+                    <li>T-SQL</li>
+                    <li>JavaScript</li>
+                  </ul>
+                </div>
+                <div class="langs__line">
+                  <span class="langs__tag" data-i18n="t070">From my studies and personal projects</span>
+                  <ul class="chips chips--quiet">
+                    <li>TypeScript</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>Go</li>
+                    <li>C++</li>
+                    <li>PHP</li>
+                    <li>Kotlin</li>
+                    <li>Flutter</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t072">Business software</h3>
+              <ul class="chips">
+                <li>Microsoft Dynamics ERP</li>
+                <li>WMS Arcante</li>
+                <li>PLM Porini</li>
+                <li>ICG POS</li>
+                <li>Shopify</li>
+                <li>ArchivesSpace</li>
+                <li>ResourceSpace</li>
+                <li>Gallery Systems</li>
+              </ul>
+            </div>
+            <div class="skills__row">
+              <h3 class="skills__label" data-i18n="t076">Methodologies and support</h3>
+              <ul class="chips">
+                <li>Agile / Scrum / Kanban</li>
+                <li data-i18n="t073">SDLC and OOP</li>
+                <li data-i18n="t074">Technical documentation</li>
+                <li data-i18n="t075">Tier 2 support</li>
+                <li>Trello / Planner</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+      <!-- #region Experience -->
 
-                                <div class="row">
-                                    <div class="col-md-2 text-center">
-                                        <i class="h1 text-black bi bi-map-fill">
-                                        </i>
-                                    </div>
-                                    <div class="col-md-9 text-left">
-                                        <div class="h4 head">Address</div>
-                                        <div class="sub-title">Montréal QC, Canada</div>
-                                    </div>          
-                                </div><br>
+      <section class="section section--tint" id="experience">
+        <div class="wrap">
+          <h2 data-i18n="t132">Experience</h2>
+          <div class="timeline">
+            <article class="job job--card job--photo">
+              <div class="job__head">
+                <div class="job__headtext">
+                  <h3 class="job__title" data-i18n="t088">Full Stack Developer</h3>
+                  <p class="job__org" data-i18n="t089">
+                    Canadian Centre for Architecture (CCA), Montréal, QC
+                  </p>
+                  <p class="job__when">
+                    <span class="job__period" data-i18n="t087">Apr 2023 – Jun 2026</span
+                    ><span class="job__sep" aria-hidden="true">·</span
+                    ><span class="job__dur" data-i18n="t086">3 years 3 months</span>
+                  </p>
+                  <p class="job__about" data-i18n="t085">
+                    International centre for research and exhibitions on architecture and urbanism, housed in
+                    a historic mansion with a sculpture garden. Its systems connect collections, publishing,
+                    retail and administration.
+                  </p>
+                </div>
+                <div
+                  class="job__photo"
+                  aria-hidden="true"
+                  style="background-image: url(assets/img/jobs/cca.jpg)"
+                ></div>
+              </div>
+              <ul class="job__list">
+                <li data-i18n="t077">
+                  Monitored the enterprise applications and APIs that ensure reliable communication and data
+                  transfer between systems, detecting and fixing failures before they affected users.
+                </li>
+                <li data-i18n="t078">
+                  Diagnosed and resolved production incidents (Tier 2) through the ticketing system.
+                </li>
+                <li data-i18n="t079">
+                  Designed, developed and deployed new RESTful APIs in C# (.NET Framework / ASP.NET Core) to
+                  integrate enterprise systems.
+                </li>
+                <li data-i18n="t080">
+                  Developed new features and applications and improved existing systems, working with users in
+                  French and English.
+                </li>
+                <li data-i18n="t081">
+                  Built an ASP.NET Core MVC application that creates, edits and deletes SharePoint intranet
+                  sites through the Microsoft Graph API.
+                </li>
+                <li data-i18n="t082">
+                  Wrote and optimized T-SQL stored procedures and queries; documented APIs with Swagger and
+                  automated scheduled jobs with Hangfire.
+                </li>
+                <li data-i18n="t083">
+                  Worked with the organization’s business platforms, including Shopify, ArchivesSpace,
+                  ResourceSpace, Gallery Systems and Power BI.
+                </li>
+                <li data-i18n="t084">
+                  Deployed and administered applications on IIS, maintained SSRS reports and managed source
+                  control in Azure DevOps (TFS).
+                </li>
+              </ul>
+            </article>
+            <article class="job job--card job--photo job--minor">
+              <div class="job__head">
+                <div class="job__headtext">
+                  <h3 class="job__title" data-i18n="t095">Landscaper</h3>
+                  <p class="job__org" data-i18n="t096">Boardwalk, Montréal, QC</p>
+                  <p class="job__when">
+                    <span class="job__period" data-i18n="t094">Jul 2021 – Mar 2023</span
+                    ><span class="job__sep" aria-hidden="true">·</span
+                    ><span class="job__dur" data-i18n="t093">1 year 9 months</span>
+                  </p>
+                  <p class="job__about" data-i18n="t092">
+                    Residential rental property management company with communities in several Canadian
+                    provinces and a major national presence.
+                  </p>
+                </div>
+                <div
+                  class="job__photo"
+                  aria-hidden="true"
+                  style="background-image: url(assets/img/jobs/boardwalk.jpg)"
+                ></div>
+              </div>
+              <ul class="job__list">
+                <li data-i18n="t090">
+                  Painted common areas of assigned buildings and maintained lawns and green spaces.
+                </li>
+                <li data-i18n="t091">
+                  Supported the maintenance and concierge teams when needed, while completing programming
+                  studies.
+                </li>
+              </ul>
+            </article>
+            <article class="job job--card job--photo">
+              <div class="job__head">
+                <div class="job__headtext">
+                  <h3 class="job__title" data-i18n="t107">Applications and Database Manager, ERP</h3>
+                  <p class="job__org" data-i18n="t108">Permoda Ltda., Bogotá, Colombia</p>
+                  <p class="job__when">
+                    <span class="job__period" data-i18n="t106">Dec 2017 – Oct 2020</span
+                    ><span class="job__sep" aria-hidden="true">·</span
+                    ><span class="job__dur" data-i18n="t105">2 years 11 months</span>
+                  </p>
+                  <p class="job__about" data-i18n="t104">
+                    Colombian company dedicated to the design, manufacturing and distribution of clothing and
+                    textile products. Founded in 1983, it operates in the formal, casual and youth fashion
+                    segments through its own stores in Colombia’s main cities, with brands such as Armi,
+                    Pronto and B.kul, and has expanded to Costa Rica and Ecuador. Its operations ran on the
+                    ERP I supported.
+                  </p>
+                </div>
+                <div
+                  class="job__photo"
+                  aria-hidden="true"
+                  style="background-image: url(assets/img/jobs/permoda.jpg)"
+                ></div>
+              </div>
+              <ul class="job__list">
+                <li data-i18n="t097">
+                  Led the technical team responsible for the daily operation and support of the Microsoft
+                  Dynamics ERP and other enterprise applications, ensuring service continuity for end users.
+                </li>
+                <li data-i18n="t098">
+                  Planned and managed the annual ERP improvement budget and software licensing.
+                </li>
+                <li data-i18n="t099">
+                  Reviewed and approved new developments, projects and migrations, coordinating requirements
+                  and schedules with area managers and third-party providers.
+                </li>
+                <li data-i18n="t100">
+                  Ensured availability, performance and security of the ERP database: optimization, indexing,
+                  statistics, locks and backups.
+                </li>
+                <li data-i18n="t101">Led ERP project execution and tracking using Agile methodologies.</li>
+                <li data-i18n="t102">
+                  Supported the team debugging Dynamics ERP code (AOT) and wrote SQL queries for incident
+                  analysis and resolution.
+                </li>
+                <li data-i18n="t103">Coordinated virtual training material for application users.</li>
+              </ul>
+            </article>
+            <details class="earlier">
+              <summary><span data-i18n="t109">Earlier roles at Permoda, 2003 to 2017</span></summary>
+              <article class="job job--card">
+                <div class="job__head">
+                  <div class="job__headtext">
+                    <h3 class="job__title" data-i18n="t116">Applications Professional, ERP</h3>
+                    <p class="job__org" data-i18n="t117">Permoda Ltda., Bogotá, Colombia</p>
+                    <p class="job__when">
+                      <span class="job__period" data-i18n="t115">Aug 2008 – Nov 2017</span
+                      ><span class="job__sep" aria-hidden="true">·</span
+                      ><span class="job__dur" data-i18n="t114">9 years 4 months</span>
+                    </p>
+                  </div>
+                </div>
+                <ul class="job__list">
+                  <li data-i18n="t110">
+                    Implemented and deployed the ERP’s standard modules and local functionalities; enhanced
+                    and maintained ERP features and executed new projects.
+                  </li>
+                  <li data-i18n="t111">Ran tests for approval and release of developments to production.</li>
+                  <li data-i18n="t112">
+                    Led application planning focused on key-user training and developed virtual training
+                    materials.
+                  </li>
+                  <li data-i18n="t113">
+                    Optimized ERP processes and procedures; escalated complex issues to Level III specialists.
+                  </li>
+                </ul>
+              </article>
+              <article class="job job--card">
+                <div class="job__head">
+                  <div class="job__headtext">
+                    <h3 class="job__title" data-i18n="t123">Production Planning Analyst</h3>
+                    <p class="job__org" data-i18n="t124">Permoda Ltda., Bogotá, Colombia</p>
+                    <p class="job__when">
+                      <span class="job__period" data-i18n="t122">2006 – 2008</span
+                      ><span class="job__sep" aria-hidden="true">·</span
+                      ><span class="job__dur" data-i18n="t121">about 2 years</span>
+                    </p>
+                  </div>
+                </div>
+                <ul class="job__list">
+                  <li data-i18n="t118">
+                    Implemented Material Requirements Planning (MRP) for product production.
+                  </li>
+                  <li data-i18n="t119">
+                    Designed technical sheets and calculated manufacturing routes and bill-of-materials cost
+                    for garments.
+                  </li>
+                  <li data-i18n="t120">
+                    Applied industrial engineering methods to improve the manufacturing process and reduce
+                    operating costs; optimized raw-material inventories.
+                  </li>
+                </ul>
+              </article>
+              <article class="job job--card">
+                <div class="job__head">
+                  <div class="job__headtext">
+                    <h3 class="job__title" data-i18n="t130">Production Engineering Analyst</h3>
+                    <p class="job__org" data-i18n="t131">Permoda Ltda., Bogotá, Colombia</p>
+                    <p class="job__when">
+                      <span class="job__period" data-i18n="t129">Nov 2003 – Dec 2006</span
+                      ><span class="job__sep" aria-hidden="true">·</span
+                      ><span class="job__dur" data-i18n="t128">3 years 2 months</span>
+                    </p>
+                  </div>
+                </div>
+                <ul class="job__list">
+                  <li data-i18n="t125">Designed and improved workload balancing for production plants.</li>
+                  <li data-i18n="t126">
+                    Defined engineering methods and standard times for workstations and garment operations.
+                  </li>
+                  <li data-i18n="t127">
+                    Prepared efficiency reports, controlled unproductive time and identified bottlenecks in
+                    production modules.
+                  </li>
+                </ul>
+              </article>
+            </details>
+          </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+      <!-- #region Projects -->
 
-                                <div class="row">
-                                    <div class="col-md-2 text-center">
-                                        <i class="h1 text-black bi bi-envelope-fill">
-                                        </i>
-                                    </div>
-                                    <div class="col-md-9 text-left">
-                                        <div class="h4 head">Email</div>
-                                        <div class="sub-title">jhondeiberd@gmail.com</div>
-                                    </div>          
-                                </div><br>
+      <section class="section" id="projects">
+        <div class="wrap">
+          <h2 data-i18n="t133">Projects</h2>
+          <div class="projects">
+            <article class="project project--featured">
+              <button
+                type="button"
+                class="project__open"
+                data-title-key="t135"
+                data-title="Intranet Site - SharePoint"
+                data-desc-key="t134"
+                data-desc="Application for an intranet hosted on SharePoint. It creates SharePoint Site Pages (.aspx) from PDF documents such as procedures, policies and published information. If the PDF has a table of contents, the application captures it and builds the page content from it, with a link to each page. Every page is an image the process generates from the corresponding page of the PDF. Each department has its own documents, so the PDF can be imported into SharePoint together with its pages. Built with ASP.NET Core MVC and the Microsoft Graph API, which also handles editing and deleting the sites. This is professional work, so the source code is not public; the diagram shows the flow."
+                data-media="assets/img/thumb-5.jpg"
+                data-type="image"
+                data-poster="assets/img/thumb-5.jpg"
+                data-code=""
+                data-youtube=""
+              >
+                <span class="project__img"
+                  ><img
+                    src="assets/img/thumb-5.jpg"
+                    width="650"
+                    height="350"
+                    loading="lazy"
+                    alt="Diagram: a PDF file goes through an ASP.NET Core application and becomes SharePoint intranet pages"
+                    data-i18n-attr="alt:t136" />
+                  <span class="project__play" aria-hidden="true"
+                    ><svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#i-external" /></svg></span
+                ></span>
+                <span class="project__text">
+                  <span class="project__title" data-i18n="t135">Intranet Site - SharePoint</span>
+                  <span class="project__short" data-i18n="t137"
+                    >Turns PDF documents (procedures, policies, announcements) into SharePoint intranet pages,
+                    automatically.</span
+                  >
+                  <ul class="project__tech">
+                    <li>C#</li>
+                    <li>ASP.NET Core MVC</li>
+                    <li>Microsoft Graph API</li>
+                    <li>SharePoint</li>
+                  </ul>
+                  <span class="project__cta" data-i18n="t138">See details</span>
+                </span>
+              </button>
+            </article>
+            <article class="project project--featured">
+              <button
+                type="button"
+                class="project__open"
+                data-title-key="t140"
+                data-title="Time Control Manufacture (TCM)"
+                data-desc-key="t139"
+                data-desc="Real-time production control system for manufacturing plants. It interfaces with the ERP production module and, through SQL Server, imports production orders, resources and manufacturing routes. Production users and coordinators follow plant execution as it happens, the application captures and processes that data, and it delivers it to the database for transformation and to BI for management reporting. It also manages plant calendars and shift schedules, with roles and permissions for each user."
+                data-media="assets/media/project-5.mp4"
+                data-type="video"
+                data-poster="assets/img/thumb-tcm.jpg"
+                data-code=""
+                data-youtube=""
+              >
+                <span class="project__img"
+                  ><img
+                    src="assets/img/thumb-tcm.jpg"
+                    width="650"
+                    height="350"
+                    loading="lazy"
+                    alt="Time Control Manufacture production control dashboard"
+                    data-i18n-attr="alt:t141" />
+                  <span class="project__play" aria-hidden="true"
+                    ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play" /></svg></span
+                ></span>
+                <span class="project__text">
+                  <span class="project__title" data-i18n="t140">Time Control Manufacture (TCM)</span>
+                  <span class="project__short" data-i18n="t142"
+                    >Real-time production control for manufacturing plants: interfaces with the ERP, captures
+                    and processes plant data, and delivers it to BI.</span
+                  >
+                  <ul class="project__tech">
+                    <li>SQL Server</li>
+                    <li>Microsoft Dynamics ERP</li>
+                    <li>BI reporting</li>
+                  </ul>
+                  <span class="project__cta" data-i18n="t143">Watch the demo</span>
+                </span>
+              </button>
+            </article>
+            <article class="project">
+              <button
+                type="button"
+                class="project__open"
+                data-title-key="t145"
+                data-title="Favorite Music Albums Manager"
+                data-desc-key="t144"
+                data-desc="Web application to manage a list of favorite music albums: search, add and delete. The back-end is a Node.js + Express server exposing REST APIs that manage a PostgreSQL database; the React.js front-end consumes those APIs and the Discogs music API. My role in this team project (two developers) was the back-end."
+                data-media="assets/media/project-2.mp4"
+                data-type="video"
+                data-poster="assets/img/thumb-2.jpg"
+                data-code="https://github.com/jhondeiberd/SoftStructure/tree/jhondeiberd/Final-project"
+                data-youtube=""
+              >
+                <span class="project__img"
+                  ><img
+                    src="assets/img/thumb-2.jpg"
+                    width="650"
+                    height="350"
+                    loading="lazy"
+                    alt="Favorite Music Albums Manager"
+                    data-i18n-attr="alt:t146" />
+                  <span class="project__play" aria-hidden="true"
+                    ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play" /></svg></span
+                ></span>
+                <span class="project__text">
+                  <span class="project__title" data-i18n="t145">Favorite Music Albums Manager</span>
+                  <span class="project__short" data-i18n="t147"
+                    >Search, add and delete favorite albums. REST back-end in Node.js and PostgreSQL, React
+                    front-end, Discogs API.</span
+                  >
+                  <ul class="project__tech">
+                    <li>Node.js</li>
+                    <li>Express</li>
+                    <li>React</li>
+                    <li>PostgreSQL</li>
+                  </ul>
+                  <span class="project__cta" data-i18n="t148">Watch the demo</span>
+                </span>
+              </button>
+            </article>
+            <article class="project">
+              <button
+                type="button"
+                class="project__open"
+                data-title-key="t150"
+                data-title="Phrase Audio"
+                data-desc-key="t149"
+                data-desc="Web app that reads a bilingual phrase list from a PDF, detects the highlighted phrases and generates a study MP3. You choose how many times each language repeats, the pauses and the voices. A Vercel serverless function turns each phrase into speech with Microsoft neural voices, and the browser assembles and encodes the final MP3. Interface in English and Spanish, with light and dark themes."
+                data-media="assets/media/project-6.mp4"
+                data-type="video"
+                data-poster="assets/img/thumb-pa.jpg"
+                data-code=""
+                data-youtube=""
+              >
+                <span class="project__img"
+                  ><img
+                    src="assets/img/thumb-pa.jpg"
+                    width="650"
+                    height="350"
+                    loading="lazy"
+                    alt="Phrase Audio web app"
+                    data-i18n-attr="alt:t151" />
+                  <span class="project__play" aria-hidden="true"
+                    ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play" /></svg></span
+                ></span>
+                <span class="project__text">
+                  <span class="project__title" data-i18n="t150">Phrase Audio</span>
+                  <span class="project__short" data-i18n="t152"
+                    >Web app that turns a bilingual phrase list (PDF) into a custom MP3 for language study,
+                    with natural voices and configurable repetitions.</span
+                  >
+                  <ul class="project__tech">
+                    <li>JavaScript</li>
+                    <li>Vercel</li>
+                  </ul>
+                  <span class="project__cta" data-i18n="t153">Watch the demo</span>
+                </span>
+              </button>
+            </article>
+            <article class="project">
+              <button
+                type="button"
+                class="project__open"
+                data-title-key="t155"
+                data-title="Personal Budget for Android"
+                data-desc-key="t154"
+                data-desc="Android application written in Kotlin to manage income, expenses and personal balance. It supports adding, editing and deleting transactions and is multilingual."
+                data-media="assets/media/project-1.mp4"
+                data-type="video"
+                data-poster="assets/img/thumb-1.jpg"
+                data-code="https://github.com/jhondeiberd/Android/tree/jhondeiberd/FinalProject"
+                data-youtube=""
+              >
+                <span class="project__img"
+                  ><img
+                    src="assets/img/thumb-1.jpg"
+                    width="650"
+                    height="350"
+                    loading="lazy"
+                    alt="Personal Budget Android app"
+                    data-i18n-attr="alt:t156" />
+                  <span class="project__play" aria-hidden="true"
+                    ><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play" /></svg></span
+                ></span>
+                <span class="project__text">
+                  <span class="project__title" data-i18n="t155">Personal Budget for Android</span>
+                  <span class="project__short" data-i18n="t157"
+                    >Track income, expenses and balance on your phone. Add, edit and delete transactions.
+                    Multilingual.</span
+                  >
+                  <ul class="project__tech">
+                    <li>Kotlin</li>
+                    <li>Android</li>
+                  </ul>
+                  <span class="project__cta" data-i18n="t158">Watch the demo</span>
+                </span>
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+      <!-- #region Education -->
 
-                                <div class="row">
-                                    <div class="col-md-2 text-center">
-                                        <i class="h1 text-black bi bi-phone-fill">
-                                        </i>
-                                    </div>
-                                    <div class="col-md-9 text-left">
-                                        <div class="h4 head">Contact</div>
-                                        <div class="sub-title">(514) 3461672</div>
-                                    </div>          
-                                </div><br>
-
-                            <div class="row">
-                                <div class="col text-left">
-                                    <a class="h1 text-black bi bi-linkedin" href="https://www.linkedin.com/in/jhondeiberd/"> </a>
-                                </div>
-                                <div class="col text-left">
-                                    <a class="h1 text-black bi-github" href="https://www.github.com/jhondeiberd/"></a>
-                                </div>
-                            </div>
-                        </div>
+      <section class="section section--tint" id="education">
+        <div class="wrap">
+          <h2 data-i18n="t159">Education and training</h2>
+          <div class="edu">
+            <div>
+              <h3 class="edu__head" data-i18n="t160">Studies</h3>
+              <ul class="edu__list">
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://collegeuniversel.ca/en/page-daccueil-en/"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/universel.png" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t161">Programming and Web Technologies</p>
+                    <p class="edu__org" data-i18n="t162">
+                      Attestation of College Studies, Collège Universel, Montréal
+                    </p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t163">Feb 2021 – Jan 2023</p></div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://www.udistrital.edu.co/inicio"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/distrital.png" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t164">Production Engineering, bachelor’s degree</p>
+                    <p class="edu__org" data-i18n="t165">
+                      Universidad Distrital Francisco José de Caldas, Bogotá
+                    </p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t166">2008 – 2013</p></div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a class="edu__logo" href="https://smart.edu.co/" target="_blank" rel="noopener"
+                    ><img src="assets/img/smart.png" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t167">English language studies, level B2</p>
+                    <p class="edu__org" data-i18n="t168">Academia Smart Colombia (online)</p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t169">Jul 2026 – present</p></div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://centre-yves-theriault.cssdm.gouv.qc.ca/"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/yves.png" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t170">Francisation, level 8</p>
+                    <p class="edu__org" data-i18n="t171">Centre Yves-Thériault, Montréal</p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t172">Jan 2023 – Jul 2025</p></div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a class="edu__logo" href="https://centrecsai.org/" target="_blank" rel="noopener"
+                    ><img src="assets/img/csai.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t173">Francisation, level 3</p>
+                    <p class="edu__org" data-i18n="t174">
+                      Centre Social d’aide aux Immigrants (CSAI), Montréal
+                    </p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t175">Started Oct 2022</p></div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://www.linkedin.com/in/fundacion-cidca-34b52a25/"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/cidca.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t176">Industrial Technology, vocational diploma</p>
+                    <p class="edu__org" data-i18n="t177">Fundación Cidca, Bogotá</p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t178">2002 – 2005</p></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="edu__head" data-i18n="t179">Courses and certificates</h3>
+              <ul class="edu__list">
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://www.lourtec.com/cursos/microsoft/desarrollo-de-software"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/lourtec.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t181">
+                      Developing C# and ASP.NET Core MVC web applications
+                    </p>
+                    <p class="edu__org" data-i18n="t182">
+                      Lourtec certificate of excellence, 120 hours (Microsoft MCSA preparation program,
+                      online)
+                    </p>
+                    <div class="edu__meta">
+                      <p class="edu__when" data-i18n="t183">Sep 2019</p>
+                      <a
+                        class="edu__link"
+                        href="assets/docs/lourtec-web-applications-certificate.pdf"
+                        target="_blank"
+                        rel="noopener"
+                        ><span data-i18n="t180">Certificate (PDF)</span></a
+                      >
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="row justify-content-center">
-                            <div class="col text-center">
-                                <h2 class="mt-0">Let's Get In Touch!</h2>
-                                <hr class="divider" />
-                                <p class="text-muted mb-5">Ready to comunicate with me? Send me a messages and we will get back to you as soon as possible!</p>
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-center mb-5">
-                            <div class="col">
-                                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                    <!-- Name input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                        <label for="name">Full name</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                                    </div>
-                                    <!-- Email address input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                        <label for="email">Email address</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                    </div>
-                                    <!-- Phone number input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                        <label for="phone">Phone number</label>
-                                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                                    </div>
-                                    <!-- Message input-->
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                        <label for="message">Message</label>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                    </div>
-                                    <!-- Submit success message-->
-                                    <!---->
-                                    <!-- This is what your users will see when the form-->
-                                    <!-- has successfully submitted-->
-                                    <div class="d-none" id="submitSuccessMessage">
-                                        <div class="text-center mb-3">
-                                            <div class="fw-bolder">Form submission successful!</div>
-                                            To activate this form, sign up at
-                                            <br />
-                                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                        </div>
-                                    </div>
-                                    <!-- Submit error message-->
-                                    <!---->
-                                    <!-- This is what your users will see when there is-->
-                                    <!-- an error submitting the form-->
-                                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                                    <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div><br>
-                                    <div class="align-self-baseline text-center">
-                                        <a class="btn btn-primary btn-xl" href="#page-top">Start</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://lourtec.com/cursos/microsoft/base-de-datos/20762-desarrollando-bases-de-datos-sql"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/lourtec.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t185">SQL 2016 Database Development</p>
+                    <p class="edu__org" data-i18n="t186">
+                      Lourtec certificate of excellence, 120 hours (Microsoft MCSA preparation program,
+                      online)
+                    </p>
+                    <div class="edu__meta">
+                      <p class="edu__when" data-i18n="t187">Jun 2020</p>
+                      <a
+                        class="edu__link"
+                        href="assets/docs/lourtec-sql2016-certificate.pdf"
+                        target="_blank"
+                        rel="noopener"
+                        ><span data-i18n="t184">Certificate (PDF)</span></a
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a class="edu__logo" href="https://www.lourtec.com/" target="_blank" rel="noopener"
+                    ><img src="assets/img/lourtec.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t188">
+                      Analyzing and Visualizing Data with Microsoft Power BI
+                    </p>
+                    <p class="edu__org" data-i18n="t189">
+                      Microsoft MCSA preparation course, Lourtec (online)
+                    </p>
+                    <div class="edu__meta"><p class="edu__when" data-i18n="t190">2020</p></div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://capacitateparaelempleo.org/pages.php?r=.tema&amp;tagID=15840"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/slim.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t192">Object-Oriented Programming paradigm</p>
+                    <p class="edu__org" data-i18n="t193">
+                      Fundación Carlos Slim (online), certificate of completion
+                    </p>
+                    <div class="edu__meta">
+                      <p class="edu__when" data-i18n="t194">Mar 2021 – May 2021</p>
+                      <a
+                        class="edu__link"
+                        href="assets/docs/oop-certificate.pdf"
+                        target="_blank"
+                        rel="noopener"
+                        ><span data-i18n="t191">Certificate (PDF)</span></a
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li class="edu__item">
+                  <a
+                    class="edu__logo"
+                    href="https://capacitateparaelempleo.org/pages.php?r=.tema&amp;tagID=4066"
+                    target="_blank"
+                    rel="noopener"
+                    ><img src="assets/img/slim.jpg" width="100" height="100" loading="lazy" alt=""
+                  /></a>
+                  <div>
+                    <p class="edu__title" data-i18n="t196">Database Administrator (DBA)</p>
+                    <p class="edu__org" data-i18n="t197">
+                      Fundación Carlos Slim (online), certificate of completion
+                    </p>
+                    <div class="edu__meta">
+                      <p class="edu__when" data-i18n="t198">Dec 2017 – Feb 2018</p>
+                      <a
+                        class="edu__link"
+                        href="assets/docs/dba-certificate.pdf"
+                        target="_blank"
+                        rel="noopener"
+                        ><span data-i18n="t195">Certificate (PDF)</span></a
+                      >
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+      <!-- #region Contact -->
 
-        <!-- Footer-->
-        <footer class="bg-light py-5">
-            <div class="row text-center">
-                <div class="col">
-                    <span class="small text-center text-muted">Jhon Deiber Diaz Parra</span>
-                </div>
-                <div class="col">
-                    <span class="small text-center text-muted">(514) 3461672</span>
-                </div>
-                <div class="col">
-                    <span class="small text-center text-muted">jhondeiberd@gmail.com</span>
-                </div>
+      <section class="section" id="contact">
+        <div class="wrap contact">
+          <div class="contact__info">
+            <h2 data-i18n="t199">Let’s talk</h2>
+            <p class="contact__lead" data-i18n="t200">
+              I’m looking for a software developer or application support role. Send me a message or write to
+              me directly.
+            </p>
+            <ul class="contact__list">
+              <li>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail" /></svg
+                ><a href="mailto:jhondeiberd@gmail.com">jhondeiberd@gmail.com</a>
+              </li>
+              <li>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone" /></svg
+                ><a href="tel:+15143461672">+1 514 346 1672</a>
+              </li>
+              <li>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pin" /></svg
+                ><span data-i18n="t201">Alberta, Canada</span>
+              </li>
+              <li>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin" /></svg
+                ><a href="https://www.linkedin.com/in/jhondeiberd/" target="_blank" rel="noopener"
+                  >LinkedIn</a
+                >
+              </li>
+              <li>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github" /></svg
+                ><a href="https://github.com/jhondeiberd" target="_blank" rel="noopener">GitHub</a>
+              </li>
+            </ul>
+          </div>
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="name" data-i18n="t202">Full name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+                minlength="2"
+                maxlength="120"
+              />
+              <p class="field__error" data-i18n="t203">Enter your name.</p>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SimpleLightbox plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script src="particles.js"></script>
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+            <div class="field">
+              <label for="email" data-i18n="t204">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" required maxlength="200" />
+              <p class="field__error" data-i18n="t205">Enter a valid email address.</p>
+            </div>
+            <div class="field">
+              <label for="phone" data-i18n="t206">Phone (optional)</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                maxlength="40"
+                placeholder="+1 514 346 1672"
+              />
+            </div>
+            <div class="field">
+              <label for="message" data-i18n="t207">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                minlength="10"
+                maxlength="4000"
+              ></textarea>
+              <p class="field__error" data-i18n="t208">Write at least 10 characters.</p>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="website">Leave this field empty</label
+              ><input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="form__status" id="formStatus" role="status" aria-live="polite"></div>
+            <button class="btn btn--primary" id="submitButton" type="submit">
+              <span data-i18n="t209">Send message</span>
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- #endregion -->
+    </main>
+    <!-- #region Footer and project dialog -->
+
+    <footer class="site-footer">
+      <div class="wrap site-footer__bar">
+        <p>&copy; <span id="year">2026</span> Jhon Deiber Diaz Parra</p>
+        <p class="version"><span data-i18n="t210">Portfolio version 1.2.0, October 2026</span></p>
+        <p class="visits" id="visitCounter" hidden>
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-eye" /></svg
+          ><span id="visitCount">0</span> <span id="visitLabel">visits</span>
+        </p>
+        <a class="totop" href="#top"><span data-i18n="t211">Back to top</span></a>
+      </div>
+    </footer>
+
+    <dialog class="modal" id="projectDialog" aria-labelledby="projectTitle">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h3 id="projectTitle"></h3>
+          <button type="button" class="iconbtn" id="projectClose" aria-label="Close">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x" /></svg>
+          </button>
+        </div>
+        <div class="modal__media" id="projectMedia"></div>
+        <p class="modal__desc" id="projectDesc"></p>
+        <div class="modal__links" id="projectLinks"></div>
+      </div>
+    </dialog>
+    <!-- #endregion -->
+    <script src="js/i18n-fr.js"></script>
+    <script src="js/i18n-es.js"></script>
+    <script src="js/i18n-ui.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
