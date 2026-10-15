@@ -1,7 +1,7 @@
 # Jhon Diaz portfolio
 
 Static portfolio (English / French / Spanish, light / dark) with two small Vercel serverless functions
-for the visit counter and the contact form. Current version: **1.2.0** (see `CHANGELOG.md`).
+for the visit counter and the contact form. Current version: **1.2.1** (see `CHANGELOG.md`).
 
 ## Structure
 
@@ -71,8 +71,8 @@ Environment variables are listed in `.env.example`. Real values live only in Ver
 
 ```bash
 git add -A
-git commit -m "v1.2.0: short description"
-git tag v1.2.0
+git commit -m "v1.2.1: short description"
+git tag v1.2.1
 git push && git push --tags
 ```
 

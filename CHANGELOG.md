@@ -6,6 +6,14 @@ All notable changes to the portfolio. Newest first. Versions follow the label in
 Version numbers restart at 1.2.0, the first production release. Entries 3.0 to 4.7 below are the internal
 development iterations that led to it.
 
+## 1.2.1 - October 2026
+
+Patch release after the first production deploy.
+
+- Desktop scale: on screens wider than 1140 px the page is scaled to 80 % (`zoom: 0.8` in `css/site.css`), which is the size the layout was designed at. Phones and tablets are unchanged.
+- Resume: the header of the EN/FR/ES PDFs now reads "LinkedIn: ... | Portfolio: jhon-diazportfolio.vercel.app" with both links clickable (CV 12.2). The GitHub entry was removed from that line.
+- Hero rotator: the "ERP Analyst" slide is now "Microsoft Dynamics ERP", with the tags "ERP Manager" and "ERP Professional" (EN/FR/ES).
+
 ## 1.2.0 - October 2026
 
 Production release (internal iteration 4.7 plus the changes below).
