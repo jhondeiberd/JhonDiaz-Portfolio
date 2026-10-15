@@ -94,6 +94,13 @@ html {
   scroll-padding-top: 64px;
   -webkit-text-size-adjust: 100%;
 }
+/* Desktop scale: the layout was designed and approved at a browser zoom of 80 %, so on wide screens
+   everything (text, spacing and images) is scaled to 80 % to match. Phones and tablets keep 100 %. */
+@media (min-width: 1141px) {
+  html {
+    zoom: 0.8;
+  }
+}
 body {
   margin: 0;
   background: var(--bg);

@@ -155,7 +155,7 @@ ROLES = [
     (('Back-End Developer', 'Développeur back-end'), [('SQL Server Developer', 'Développeur SQL Server'), ('API Developer', 'Développeur d’API'), ('Integration Developer', 'Développeur d’intégration')]),
     (('Front-End Developer', 'Développeur front-end'), [('JavaScript Developer', 'Développeur JavaScript'), ('UI Developer', 'Développeur d’interfaces'), ('Web Developer', 'Développeur Web')]),
     (('Enterprise Applications', 'Applications d’entreprise'), [('Business Systems', 'Systèmes d’affaires'), ('Enterprise Apps', 'Applications d’entreprise'), ('Systems Integration', 'Intégration de systèmes')]),
-    (('ERP Analyst', 'Analyste ERP'), [('Microsoft Dynamics ERP', 'Microsoft Dynamics ERP'), ('ERP Applications', 'Applications ERP'), ('ERP Support', 'Soutien ERP')]),
+    (('Microsoft Dynamics ERP', 'Microsoft Dynamics ERP'), [('ERP Manager', 'Gestionnaire ERP'), ('ERP Professional', 'Professionnel ERP')]),
     (('Application Support', 'Soutien aux applications'), [('Application Support Analyst', 'Analyste de soutien aux applications'), ('Systems Support', 'Soutien aux systèmes')]),
 ]
 
@@ -618,7 +618,7 @@ footer = f'''
 <footer class="site-footer">
   <div class="wrap site-footer__bar">
     <p>&copy; <span id="year">2026</span> Jhon Deiber Diaz Parra</p>
-    <p class="version">{el('span', 'Portfolio version 1.2.0, October 2026', 'Portfolio version 1.2.0, octobre 2026')}</p>
+    <p class="version">{el('span', 'Portfolio version 1.2.1, October 2026', 'Portfolio version 1.2.1, octobre 2026')}</p>
     <p class="visits" id="visitCounter" hidden>{icon('eye')}<span id="visitCount">0</span> <span id="visitLabel">visits</span></p>
     <a class="totop" href="#top">{el('span', 'Back to top', 'Haut de la page')}</a>
   </div>

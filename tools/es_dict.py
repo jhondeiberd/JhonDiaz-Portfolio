@@ -214,10 +214,9 @@ ES = {
  "Prompt engineering": "Ingeniería de prompts",
  "Home": "Inicio",
  "Intranet Site - SharePoint": "Sitio de intranet - SharePoint",
- "ERP Analyst": "Analista ERP",
+ "ERP Manager": "Gerente de ERP",
  "Systems Integration": "Integración de sistemas",
- "ERP Applications": "Aplicaciones ERP",
- "ERP Support": "Soporte ERP",
+ "ERP Professional": "Profesional ERP",
  "I like to adopt new technologies early. I use AI assistants to speed up development and optimize code, and I always review, test and understand what I deliver.": "Me gusta adoptar pronto las nuevas tecnologías. Uso asistentes de IA para acelerar el desarrollo y optimizar el código, y siempre reviso, pruebo y entiendo lo que entrego.",
  "International centre for research and exhibitions on architecture and urbanism, housed in a historic mansion with a sculpture garden. Its systems connect collections, publishing, retail and administration.": "Centro internacional de investigación y exposiciones sobre arquitectura y urbanismo, instalado en una mansión histórica con un jardín de esculturas. Sus sistemas conectan las colecciones, las publicaciones, la tienda y la administración.",
  "Residential rental property management company with communities in several Canadian provinces and a major national presence.": "Empresa de administración de inmuebles residenciales de alquiler, con presencia en varias provincias de Canadá y una gran presencia a nivel nacional.",
@@ -235,5 +234,5 @@ ES = {
  "Real-time production control for manufacturing plants: interfaces with the ERP, captures and processes plant data, and delivers it to BI.": "Control de la producción en tiempo real para plantas de manufactura: se interconecta con el ERP, captura y procesa los datos de planta y los entrega a BI.",
  "Portfolio version 4.4, October 2026": "Versión 4.4 del portafolio, octubre de 2026",
  "Real-time production control system for manufacturing plants. It interfaces with the ERP production module and, through SQL Server, imports production orders, resources and manufacturing routes. Production users and coordinators follow plant execution as it happens, the application captures and processes that data, and it delivers it to the database for transformation and to BI for management reporting. It also manages plant calendars and shift schedules, with roles and permissions for each user.": "Sistema de control de la producción en tiempo real para plantas de manufactura. Se interconecta con el módulo de producción del ERP y, mediante SQL Server, importa las órdenes de producción, los recursos y las rutas de fabricación. Los usuarios y coordinadores de producción siguen la ejecución de las plantas a medida que ocurre, la aplicación captura y procesa esos datos y los entrega a la base de datos para su transformación y a BI para los reportes gerenciales. También gestiona los calendarios y los horarios de turnos de las plantas, con roles y permisos para cada usuario.",
- "Portfolio version 1.2.0, October 2026": "Versión 1.2.0 del portafolio, octubre de 2026"
+ "Portfolio version 1.2.1, October 2026": "Versión 1.2.1 del portafolio, octubre de 2026"
 }
