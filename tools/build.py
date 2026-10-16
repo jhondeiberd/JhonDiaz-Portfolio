@@ -314,7 +314,7 @@ skills = f'''
 
 
 # region 7. Experience
-def job(title_en, title_fr, org_en, org_fr, period_en, period_fr, bullets, open_=False, extra_cls='', dur=None, about=None, photo=None):
+def job(title_en, title_fr, org_en, org_fr, period_en, period_fr, bullets, open_=False, extra_cls='', dur=None, about=None, photo=None, tech=None, lead=None, tech_label=('Tech:', 'Technologies :')):
     """One experience card.
 
     bullets: list of (English, French) achievements.   dur: (English, French) length of the role.
@@ -325,6 +325,9 @@ def job(title_en, title_fr, org_en, org_fr, period_en, period_fr, bullets, open_
     a = el('p', about[0], about[1], 'job__about') if about else ''
     d = el('span', dur[0], dur[1], 'job__dur') if dur else ''
     when = '<p class="job__when">' + el('span', period_en, period_fr, 'job__period') + ('<span class="job__sep" aria-hidden="true">·</span>' + d if d else '') + '</p>'
+    tech_html = el('span', tech[0], tech[1]) if isinstance(tech, tuple) else tech
+    tc = ('<p class="job__tech">' + el('span', tech_label[0], tech_label[1], 'job__techlabel') + ' ' + tech_html + '</p>') if tech else ''
+    ld = el('p', lead[0], lead[1], 'job__lead') if lead else ''
     ph = ('<div class="job__photo" aria-hidden="true" style="background-image:url(%s)"></div>' % photo) if photo else ''
     cls = 'job job--card' + (' job--photo' if photo else '') + (' ' + extra_cls if extra_cls else '')
     return f'''<article class="{cls}">
@@ -337,79 +340,119 @@ def job(title_en, title_fr, org_en, org_fr, period_en, period_fr, bullets, open_
         </div>
         {ph}
       </div>
+      {ld}
       <ul class="job__list">{lis}</ul>
+      {tc}
     </article>'''
 
 
 # Experience, newest first. Photos live in assets/img/jobs/.
-cca = job('Full Stack Developer', 'Développeur full stack',
+cca = job('Full Stack Developer (C# / .NET / API)', 'Développeur full stack (C# / .NET / API)',
           'Canadian Centre for Architecture (CCA), Montréal, QC', 'Centre Canadien d’Architecture (CCA), Montréal (QC)',
           'Apr 2023 – Jun 2026', 'avr. 2023 – juin 2026', dur=('3 years 3 months', '3 ans 3 mois'),
           photo='assets/img/jobs/cca.jpg', about=('International centre for research and exhibitions on architecture and urbanism, housed in a historic mansion with a sculpture garden. Its systems connect collections, publishing, retail and administration.', 'Centre international de recherche et d’expositions sur l’architecture et l’urbanisme, installé dans une demeure historique dotée d’un jardin de sculptures. Ses systèmes relient les collections, l’édition, la boutique et l’administration.'), bullets=[
     ('Monitored the enterprise applications and APIs that ensure reliable communication and data transfer between systems, detecting and fixing failures before they affected users.',
-     'Surveillance des applications et des API d’entreprise qui assurent une communication et un transfert de données fiables entre les systèmes, avec détection et correction des défaillances avant qu’elles touchent les utilisateurs.'),
-    ('Diagnosed and resolved production incidents (Tier 2) through the ticketing system.',
-     'Diagnostic et résolution d’incidents en production (niveau 2) au moyen du système de billetterie.'),
-    ('Designed, developed and deployed new RESTful APIs in C# (.NET Framework / ASP.NET Core) to integrate enterprise systems.',
-     'Conception, développement et déploiement de nouvelles API RESTful en C# (.NET Framework / ASP.NET Core) pour intégrer les systèmes d’entreprise.'),
-    ('Developed new features and applications and improved existing systems, working with users in French and English.',
-     'Développement de nouvelles fonctionnalités et applications et amélioration des systèmes existants, en collaboration avec des utilisateurs en français et en anglais.'),
-    ('Built an ASP.NET Core MVC application that creates, edits and deletes SharePoint intranet sites through the Microsoft Graph API.',
-     'Création d’une application ASP.NET Core MVC qui crée, modifie et supprime des sites intranet SharePoint grâce à l’API Microsoft Graph.'),
-    ('Wrote and optimized T-SQL stored procedures and queries; documented APIs with Swagger and automated scheduled jobs with Hangfire.',
-     'Écriture et optimisation de procédures stockées et de requêtes T-SQL; documentation des API avec Swagger et automatisation des tâches planifiées avec Hangfire.'),
-    ('Worked with the organization’s business platforms, including Shopify, ArchivesSpace, ResourceSpace, Gallery Systems and Power BI.',
-     'Travail avec les plateformes d’affaires de l’organisation, dont Shopify, ArchivesSpace, ResourceSpace, Gallery Systems et Power BI.'),
-    ('Deployed and administered applications on IIS, maintained SSRS reports and managed source control in Azure DevOps (TFS).',
-     'Déploiement et administration d’applications sur IIS, maintenance de rapports SSRS et gestion du contrôle de version dans Azure DevOps (TFS).'),
+     'Surveillance des applications d’entreprise et des API qui assurent une communication et un transfert de données fiables entre les systèmes, avec détection et correction des défaillances avant qu’elles n’affectent les utilisateurs.'),
+    ('Diagnosed and resolved Tier 2 production incidents and user requests through the ticket management system, providing technical support and effective solutions.',
+     'Diagnostic et résolution d’incidents de production de niveau 2 et de demandes d’utilisateurs via le système de gestion des tickets, en offrant un soutien technique et des solutions efficaces.'),
+    ('Designed, developed and deployed new RESTful APIs in C# using .NET Framework to integrate enterprise systems.',
+     'Conception, développement et déploiement de nouvelles API RESTful en C# avec .NET Framework pour intégrer les systèmes d’entreprise.'),
+    ('Developed new features and applications and improved existing systems based on business requirements, working with users in French and English.',
+     'Développement de nouvelles fonctionnalités et applications et amélioration des systèmes existants selon les besoins d’affaires, en collaboration avec des utilisateurs en français et en anglais.'),
+    ('Wrote and optimized T-SQL stored procedures and queries in SQL Server to improve application performance, and modified SSRS reports according to user requirements.',
+     'Rédaction et optimisation de procédures stockées et de requêtes T-SQL dans SQL Server pour améliorer la performance des applications, et modification de rapports SSRS selon les besoins des utilisateurs.'),
+    ('Documented APIs with Swagger and automated scheduled jobs with Hangfire.',
+     'Documentation des API avec Swagger et automatisation de tâches planifiées avec Hangfire.'),
+    ('Integrated data from the organization’s business platforms (Shopify, ArchivesSpace, ResourceSpace, Gallery Systems and Power BI) through APIs.',
+     'Intégration, par API, des données des plateformes d’affaires de l’organisation (Shopify, ArchivesSpace, ResourceSpace, Gallery Systems et Power BI).'),
+    ('Managed the development, testing and production environments on IIS servers; handled source control, work items and deployments in Azure DevOps (TFS) and wrote technical documentation for every modification, improvement and update.',
+     'Gestion des environnements de développement, de test et de production sur des serveurs IIS; gestion du contrôle de version, des éléments de travail et des déploiements dans Azure DevOps (TFS) et rédaction de la documentation technique de chaque modification, amélioration et mise à jour.'),
+], lead=('Full stack developer for the CCA’s enterprise systems (C#, .NET Framework, SQL Server).', 'Développeur full stack pour les systèmes d’entreprise du CCA (C#, .NET Framework, SQL Server).'),
+   tech=('C#, .NET Framework, SQL Server (T-SQL), SSRS, REST APIs, Microsoft Graph, SharePoint, Swagger, Hangfire, IIS, Azure DevOps (TFS).', 'C#, .NET Framework, SQL Server (T-SQL), SSRS, API REST, Microsoft Graph, SharePoint, Swagger, Hangfire, IIS, Azure DevOps (TFS).'))
+landscaper = job('Landscaper', 'Paysagiste',
+ 'Boardwalk, Montréal, QC', 'Boardwalk, Montréal (QC)',
+                 'Jul 2021 – Mar 2023', 'juil. 2021 – mars 2023', dur=('1 year 9 months', '1 an 9 mois'),
+                 photo='assets/img/jobs/boardwalk.jpg', about=('Residential rental property management company with communities in several Canadian provinces and a major national presence.', 'Entreprise de gestion d’immeubles résidentiels locatifs, présente dans plusieurs provinces canadiennes et bien établie à l’échelle nationale.'), extra_cls='job--minor', lead=('Maintenance of the common areas of residential buildings while completing programming studies.', 'Entretien des aires communes d’immeubles résidentiels tout en poursuivant des études en programmation.'), bullets=[
+    ('Executed painting works in the common areas of assigned buildings.',
+     'Exécution de travaux de peinture dans les aires communes des immeubles assignés.'),
+    ('Performed lawn maintenance and mowing in the properties’ green areas.',
+     'Entretien des pelouses et tonte dans les espaces verts des propriétés.'),
+    ('Supported the maintenance and concierge teams as required.',
+     'Soutien aux équipes d’entretien et de conciergerie au besoin.')
 ])
 
-landscaper = job('Landscaper', 'Préposé à l’entretien paysager',
-                 'Boardwalk, Montréal, QC', 'Boardwalk, Montréal (QC)',
-                 'Jul 2021 – Mar 2023', 'juil. 2021 – mars 2023', dur=('1 year 9 months', '1 an 9 mois'),
-                 photo='assets/img/jobs/boardwalk.jpg', about=('Residential rental property management company with communities in several Canadian provinces and a major national presence.', 'Entreprise de gestion d’immeubles résidentiels locatifs, présente dans plusieurs provinces canadiennes et bien établie à l’échelle nationale.'), bullets=[
-    ('Painted common areas of assigned buildings and maintained lawns and green spaces.',
-     'Peinture des aires communes des immeubles assignés et entretien des pelouses et des espaces verts.'),
-    ('Supported the maintenance and concierge teams when needed, while completing programming studies.',
-     'Soutien aux équipes d’entretien et de conciergerie au besoin, tout en terminant mes études en programmation.'),
-], extra_cls='job--minor')
-
-permoda_mgr = job('Applications and Database Manager, ERP', 'Gestionnaire des applications et des bases de données (ERP)',
-                  'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)',
+permoda_mgr = job('Applications and Database Manager – ERP (Microsoft Dynamics)', 'Gestionnaire des applications et de la base de données – ERP (Microsoft Dynamics)',
+ 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)',
                   'Dec 2017 – Oct 2020', 'déc. 2017 – oct. 2020', dur=('2 years 11 months', '2 ans 11 mois'),
-                  photo='assets/img/jobs/permoda.jpg', about=('Colombian company dedicated to the design, manufacturing and distribution of clothing and textile products. Founded in 1983, it operates in the formal, casual and youth fashion segments through its own stores in Colombia’s main cities, with brands such as Armi, Pronto and B.kul, and has expanded to Costa Rica and Ecuador. Its operations ran on the ERP I supported.', 'Entreprise colombienne dédiée à la conception, à la fabrication et à la distribution de vêtements et de produits textiles. Fondée en 1983, elle exerce dans les segments de la mode formelle, décontractée et jeune par l’intermédiaire de ses propres magasins dans les principales villes de Colombie, avec des marques comme Armi, Pronto et B.kul, et s’est étendue au Costa Rica et en Équateur. Ses activités reposaient sur l’ERP que je soutenais.'), bullets=[
+                  photo='assets/img/jobs/permoda.jpg', about=('Colombian company dedicated to the design, manufacturing and distribution of clothing and textile products. Founded in 1983, it operates in the formal, casual and youth fashion segments through its own stores in Colombia’s main cities, with brands such as Armi, Pronto and B.kul, and has expanded to Costa Rica and Ecuador. Its operations ran on the ERP I supported.', 'Entreprise colombienne dédiée à la conception, à la fabrication et à la distribution de vêtements et de produits textiles. Fondée en 1983, elle exerce dans les segments de la mode formelle, décontractée et jeune par l’intermédiaire de ses propres magasins dans les principales villes de Colombie, avec des marques comme Armi, Pronto et B.kul, et s’est étendue au Costa Rica et en Équateur. Ses activités reposaient sur l’ERP que je soutenais.'), lead=('Responsible for the Microsoft Dynamics ERP, the company’s enterprise applications and their database at an apparel manufacturing company.', 'Responsable de l’ERP Microsoft Dynamics, des applications d’entreprise de la société et de leur base de données dans une entreprise de fabrication de vêtements.'), bullets=[
     ('Led the technical team responsible for the daily operation and support of the Microsoft Dynamics ERP and other enterprise applications, ensuring service continuity for end users.',
-     'Direction de l’équipe technique responsable de l’exploitation quotidienne et du soutien de l’ERP Microsoft Dynamics et d’autres applications d’entreprise, afin d’assurer la continuité du service pour les utilisateurs.'),
+     'Direction de l’équipe technique responsable de l’exploitation quotidienne et du soutien de l’ERP Microsoft Dynamics et des autres applications d’entreprise, afin d’assurer la continuité du service pour les utilisateurs finaux.'),
     ('Planned and managed the annual ERP improvement budget and software licensing.',
      'Planification et gestion du budget annuel d’amélioration de l’ERP et des licences logicielles.'),
-    ('Reviewed and approved new developments, projects and migrations, coordinating requirements and schedules with area managers and third-party providers.',
-     'Examen et approbation des nouveaux développements, projets et migrations, avec coordination des exigences et des échéanciers auprès des gestionnaires de secteur et des fournisseurs tiers.'),
+    ('Reviewed and approved new developments, projects and migrations, coordinating requirements and project schedules with area managers and third-party service providers.',
+     'Révision et approbation des nouveaux développements, projets et migrations, en coordonnant les besoins et les échéanciers de projet avec les gestionnaires de secteur et les fournisseurs de services tiers.'),
     ('Ensured availability, performance and security of the ERP database: optimization, indexing, statistics, locks and backups.',
-     'Garantie de la disponibilité, de la performance et de la sécurité de la base de données de l’ERP : optimisation, index, statistiques, verrous et sauvegardes.'),
-    ('Led ERP project execution and tracking using Agile methodologies.',
-     'Direction de l’exécution et du suivi des projets ERP selon les méthodes agiles.'),
+     'Garantie de la disponibilité, de la performance et de la sécurité de la base de données de l’ERP : optimisation, indexation, statistiques, verrous et sauvegardes.'),
+    ('Led the execution and follow-up of ERP projects and developments in Microsoft Dynamics using Agile methodologies.',
+     'Direction de l’exécution et du suivi des projets et développements ERP dans Microsoft Dynamics selon les méthodologies Agile.'),
     ('Supported the team debugging Dynamics ERP code (AOT) and wrote SQL queries for incident analysis and resolution.',
-     'Soutien de l’équipe dans le débogage du code de Dynamics ERP (AOT) et écriture de requêtes SQL pour l’analyse et la résolution d’incidents.'),
+     'Soutien à l’équipe dans le débogage du code de Dynamics ERP (AOT) et rédaction de requêtes SQL pour l’analyse et la résolution d’incidents.'),
+    ('Planned, implemented and supervised IT solutions that met end-user requirements, including deployment and support in the production environment.',
+     'Planification, mise en œuvre et supervision de solutions TI répondant aux besoins des utilisateurs finaux, y compris le déploiement et le soutien en environnement de production.'),
     ('Coordinated virtual training material for application users.',
-     'Coordination du matériel de formation virtuelle destiné aux utilisateurs des applications.'),
-])
+     'Coordination du matériel de formation virtuel destiné aux utilisateurs des applications.')
+], tech=('Microsoft Dynamics ERP (AOT), SQL Server (T-SQL), POS ICG, WMS Arcante, PLM Porini, database administration (indexing, statistics, backups), Agile.', 'Microsoft Dynamics ERP (AOT), SQL Server (T-SQL), POS ICG, WMS Arcante, PLM Porini, administration de bases de données (indexation, statistiques, sauvegardes), Agile.'))
 
 # Permoda roles before 2017 are collapsed in a <details> block.
 earlier = f'''<details class="earlier">
       <summary>{el('span', 'Earlier roles at Permoda, 2003 to 2017', 'Postes antérieurs chez Permoda, de 2003 à 2017')}</summary>
-      {job('Applications Professional, ERP', 'Spécialiste des applications ERP', 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)', 'Aug 2008 – Nov 2017', 'août 2008 – nov. 2017', dur=('9 years 4 months', '9 ans 4 mois'), bullets=[
-          ('Implemented and deployed the ERP’s standard modules and local functionalities; enhanced and maintained ERP features and executed new projects.', 'Implantation et déploiement des modules standards de l’ERP et des fonctionnalités locales; amélioration et maintenance des fonctions de l’ERP et exécution de nouveaux projets.'),
-          ('Ran tests for approval and release of developments to production.', 'Exécution des tests d’approbation et de mise en production des développements.'),
-          ('Led application planning focused on key-user training and developed virtual training materials.', 'Direction de la planification des applications axée sur la formation des utilisateurs clés et conception de matériel de formation virtuelle.'),
-          ('Optimized ERP processes and procedures; escalated complex issues to Level III specialists.', 'Optimisation des processus et procédures de l’ERP; escalade des problèmes complexes aux spécialistes de niveau III.')])}
-      {job('Production Planning Analyst', 'Analyste de planification de la production', 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)', '2006 – 2008', '2006 – 2008', dur=('about 2 years', 'environ 2 ans'), bullets=[
-          ('Implemented Material Requirements Planning (MRP) for product production.', 'Mise en œuvre de la planification des besoins en matières (MRP) pour la production.'),
-          ('Designed technical sheets and calculated manufacturing routes and bill-of-materials cost for garments.', 'Conception de fiches techniques et calcul des gammes de fabrication et du coût des nomenclatures pour les vêtements.'),
-          ('Applied industrial engineering methods to improve the manufacturing process and reduce operating costs; optimized raw-material inventories.', 'Application de méthodes de génie industriel pour améliorer le procédé de fabrication et réduire les coûts d’exploitation; optimisation des stocks de matières premières.')])}
-      {job('Production Engineering Analyst', 'Analyste en génie de production', 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)', 'Nov 2003 – Dec 2006', 'nov. 2003 – déc. 2006', dur=('3 years 2 months', '3 ans 2 mois'), bullets=[
-          ('Designed and improved workload balancing for production plants.', 'Conception et amélioration de l’équilibrage de la charge de travail dans les usines de production.'),
-          ('Defined engineering methods and standard times for workstations and garment operations.', 'Définition des méthodes d’ingénierie et des temps standards pour les postes de travail et les opérations de confection.'),
-          ('Prepared efficiency reports, controlled unproductive time and identified bottlenecks in production modules.', 'Préparation de rapports d’efficacité, contrôle du temps improductif et repérage des goulots d’étranglement dans les modules de production.')])}
+      {job('Applications Professional – ERP (Microsoft Dynamics)', 'Professionnel des applications – ERP (Microsoft Dynamics)',
+ 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)', 'Aug 2008 – Nov 2017', 'août 2008 – nov. 2017', dur=('9 years 4 months', '9 ans 4 mois'), lead=('Application specialist for the Microsoft Dynamics ERP at an apparel manufacturing company, from implementation and testing to key-user training and Level II support.', 'Spécialiste des applications de l’ERP Microsoft Dynamics dans une entreprise de fabrication de vêtements, de la mise en œuvre et des tests à la formation des utilisateurs clés et au soutien de niveau II.'), bullets=[
+    ('Implemented and deployed standard ERP modules and local functionalities in the production environment.',
+     'Mise en œuvre et déploiement des modules standard de l’ERP et des fonctionnalités locales en environnement de production.'),
+    ('Enhanced and maintained ERP functionalities, managing the execution of new projects.',
+     'Amélioration et maintenance des fonctionnalités de l’ERP, avec gestion de l’exécution de nouveaux projets.'),
+    ('Executed testing for the approval and implementation of developments in the production environment.',
+     'Exécution des tests pour l’approbation et la mise en œuvre des développements en environnement de production.'),
+    ('Optimized processes and procedures in the ERP system.',
+     'Optimisation des processus et des procédures dans l’ERP.'),
+    ('Led the definition and planning of applications focused on key-user training.',
+     'Direction de la définition et de la planification des applications axées sur la formation des utilisateurs clés.'),
+    ('Developed virtual training materials for ERP modules.',
+     'Développement de matériel de formation virtuel pour les modules de l’ERP.'),
+    ('Escalated complex technical issues to Level III specialists according to the established support structure.',
+     'Transmission des problèmes techniques complexes aux spécialistes de niveau III selon la structure de soutien établie.')
+], tech='Microsoft Dynamics ERP, PLM Porini, Agile.')}
+      {job('Production Planning Analyst', 'Analyste de la planification de la production',
+ 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)', '2006 – 2008', '2006 – 2008', dur=('about 2 years', 'environ 2 ans'), lead=('Production planning analyst for the garment production plants of an apparel manufacturing company, focused on workload balancing, time standards and plant efficiency.', 'Analyste de la planification de la production dans les usines de confection d’une entreprise de fabrication de vêtements, axé sur l’équilibrage de la charge de travail, les temps standards et l’efficacité des usines.'), bullets=[
+    ('Designed and improved workload balancing for the production plants.',
+     'Conception et amélioration de l’équilibrage de la charge de travail des usines de production.'),
+    ('Implemented engineering methods and time analysis for the plants’ workstations.',
+     'Mise en œuvre de méthodes d’ingénierie et d’analyse des temps pour les postes de travail des usines.'),
+    ('Designed and implemented standard times for garment operations.',
+     'Conception et mise en œuvre de temps standards pour les opérations de confection.'),
+    ('Prepared operational listings for garment products.',
+     'Préparation des listes opérationnelles pour les produits de confection.'),
+    ('Identified and improved bottlenecks in the production modules.',
+     'Repérage et amélioration des goulots d’étranglement dans les modules de production.'),
+    ('Prepared efficiency reports and controlled the plant’s unproductive time.',
+     'Préparation de rapports d’efficacité et contrôle du temps improductif de l’usine.')
+], tech=('Production planning, methods and time analysis, standard times, workload balancing, efficiency reporting.', 'planification de la production, analyse des méthodes et des temps, temps standards, équilibrage de la charge de travail, rapports d’efficacité.'), tech_label=('Skills:', 'Compétences :'))}
+      {job('Production Engineering Analyst', 'Analyste en génie de la production',
+ 'Permoda Ltda., Bogotá, Colombia', 'Permoda Ltda., Bogotá (Colombie)', 'Nov 2003 – Dec 2006', 'nov. 2003 – déc. 2006', dur=('3 years 2 months', '3 ans 2 mois'), lead=('Production engineering analyst for the garment production plants of an apparel manufacturing company, focused on workload balancing, time standards and plant efficiency.', 'Analyste en génie de la production dans les usines de confection d’une entreprise de fabrication de vêtements, axé sur l’équilibrage de la charge de travail, les temps standards et l’efficacité des usines.'), bullets=[
+    ('Designed and improved workload balancing for the production plants.',
+     'Conception et amélioration de l’équilibrage de la charge de travail des usines de production.'),
+    ('Implemented engineering methods and time analysis for the plants’ workstations.',
+     'Mise en œuvre de méthodes d’ingénierie et d’analyse des temps pour les postes de travail des usines.'),
+    ('Designed and implemented standard times for garment operations.',
+     'Conception et mise en œuvre de temps standards pour les opérations de confection.'),
+    ('Prepared operational listings for garment products.',
+     'Préparation des listes opérationnelles pour les produits de confection.'),
+    ('Identified and improved bottlenecks in the production modules.',
+     'Repérage et amélioration des goulots d’étranglement dans les modules de production.'),
+    ('Prepared efficiency reports and controlled the plant’s unproductive time.',
+     'Préparation de rapports d’efficacité et contrôle du temps improductif de l’usine.')
+], tech=('Production planning, methods and time analysis, standard times, workload balancing, efficiency reporting.', 'planification de la production, analyse des méthodes et des temps, temps standards, équilibrage de la charge de travail, rapports d’efficacité.'), tech_label=('Skills:', 'Compétences :'))}
     </details>'''
 
 experience = f'''
@@ -618,7 +661,7 @@ footer = f'''
 <footer class="site-footer">
   <div class="wrap site-footer__bar">
     <p>&copy; <span id="year">2026</span> Jhon Deiber Diaz Parra</p>
-    <p class="version">{el('span', 'Portfolio version 1.2.1, October 2026', 'Portfolio version 1.2.1, octobre 2026')}</p>
+    <p class="version">{el('span', 'Portfolio version 1.2.2, October 2026', 'Portfolio version 1.2.2, octobre 2026')}</p>
     <p class="visits" id="visitCounter" hidden>{icon('eye')}<span id="visitCount">0</span> <span id="visitLabel">visits</span></p>
     <a class="totop" href="#top">{el('span', 'Back to top', 'Haut de la page')}</a>
   </div>

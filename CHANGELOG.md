@@ -6,6 +6,14 @@ All notable changes to the portfolio. Newest first. Versions follow the label in
 Version numbers restart at 1.2.0, the first production release. Entries 3.0 to 4.7 below are the internal
 development iterations that led to it.
 
+## 1.2.2 - October 2026
+
+- Experience: role descriptions unified with LinkedIn and the CVs (EN/FR/ES). Every role now has a short
+  header line, the same bullets as the CV and a "Tech:" (or "Skills:") footer. CCA is described with
+  .NET Framework; the SharePoint intranet app lives under Projects.
+- The three CV PDFs in `assets/docs/` replaced with the updated versions.
+- No change to `api/` or the visit counter (Redis key `portfolio:visits:total`).
+
 ## 1.2.1 - October 2026
 
 Patch release after the first production deploy.

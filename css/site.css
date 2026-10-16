@@ -1536,3 +1536,26 @@ section.section[id] {
   }
 }
 /* #endregion */
+
+.job__tech {
+  margin: -0.6rem 0 0;
+  padding: 0 1.7rem 1.4rem 2.9rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+.job__techlabel {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.job__lead {
+  margin: 0;
+  padding: 1.1rem 1.7rem 0 2.9rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+.job__lead + .job__list {
+  border-top: 0;
+  padding-top: 0.8rem;
+}
